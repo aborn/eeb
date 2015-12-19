@@ -7,10 +7,10 @@ defmodule Eeb.Convert do
       {:ok, files} ->
         Enum.filter(files, &(is_file_supported(&1)))
       {:error, reason} ->
-        IO.puts "read error #{reason}"
+        IO.puts "File.ls error #{reason}"
         []
       _ ->
-        IO.puts "other files"
+        IO.puts "other error exception"
         []
     end
   end
