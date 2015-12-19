@@ -1,5 +1,6 @@
 # eeb
-Elixir Earmark Blog
+Elixir Earmark Blog  
+[![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)
 
 ## Installation
 
