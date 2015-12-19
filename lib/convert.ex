@@ -2,17 +2,24 @@ defmodule Eeb.Convert do
   @moduledoc """
   将markdown文件转化成html文档
   """
-
   def blog_files() do
     case File.ls(post_path()) do
-      {:ok, [files]} ->
-        files
+      {:ok, files} ->
+        Enum.filter(files, &(is_file_supported(&1)))
       {:error, reason} ->
         IO.puts "read error #{reason}"
         []
       _ ->
+        IO.puts "other files"
         []
     end
+  end
+
+  @doc """
+  是否为支持类型的转换文件，暂时只保留以md结尾的文件
+  """
+  def is_file_supported(x) do
+    x =~ ~r".md$"
   end
   
   @doc """
