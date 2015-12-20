@@ -8,13 +8,35 @@ defmodule Eeb.Convert do
   """
   def convert_markdown_blogs_to_html() do
     files = get_blog_files()
-    html_path = html_path();
+    html_path = html_path()
     unless html_path_check(html_path) do
       raise "Generate html failed!"
     end
-    
+
+    Enum.each(files, &(convert_each_item(&1)))
   end
 
+  def convert_each_item(file) do
+    blog_path = post_path()
+    html_path = html_path()
+    file_out_put = Path.join(html_path, get_file_name_without_suffix(file) <> ".html")
+    file = Path.join(blog_path, file)
+    
+    Hex.Shell.info("process file:" <> file <> "...")
+    case File.read(file) do
+      {:ok, content} ->
+        html_doc = Earmark.to_html(content)
+        File.write(file_out_put, html_doc)
+        Hex.Shell.info("success process file:" <> file)
+      {:error, _} ->
+        Hex.Shell.error("error in process file: #{file}")
+    end
+  end
+
+  def get_file_name_without_suffix(file) do
+    String.split(file, ".") |> hd
+  end
+  
   def html_path_check(html_path) do
     unless File.exists?(html_path) do
       case File.mkdir_p(html_path) do
