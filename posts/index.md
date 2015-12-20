@@ -11,9 +11,9 @@ eeb means elixir earmark blog, githb [eeb](https://github.com/aborn/eeb)
 
 ## code style
 This is a code
-```elixir
-  def to_html(text) when is_binary(text) do
-    get_markdown_processor().to_html(text)
-    |> pretty_codeblocks()
-  end
+```
+   def get_template_footer() do
+      config = ConfigUtils.build_config()
+      Templates.footer_template(config)
+   end
 ```

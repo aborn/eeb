@@ -5,14 +5,12 @@
             <a href="https://github.com/aborn/eeb" title="eeb" rel="help" target="_blank">eeb</a> (v<%= config.version %>).
         </span>
       </p>
-      <button class="night-mode-toggle" />
     </footer>
   </div>
-</section>
-</div>
 
-<script src="http://oss.maxcdn.com/jquery/2.1.4/jquery.min.js"></script>
-<script src="http://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.js"></script>
-<script src="http://oss.maxcdn.com/highlight.js/8.9.1/highlight.min.js"></script>
+  <script src="http://oss.maxcdn.com/jquery/2.1.4/jquery.min.js"></script>
+  <script src="http://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.js"></script>
+  <script src="http://oss.maxcdn.com/highlight.js/<%= config.highlight %>/highlight.min.js"></script>
+  <script src="assets/app.js"></script>
   </body>
 </html>

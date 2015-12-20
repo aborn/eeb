@@ -30,7 +30,7 @@ defmodule Eeb.Convert do
     Hex.Shell.info("process file:" <> file <> "...")
     case File.read(file) do
       {:ok, content} ->
-        html_bodycontent = Earmark.to_html(content)
+        html_bodycontent = Earmark.to_html(content) |> pretty_codeblocks
         html_header = get_temmplate_header()
         html_footer = get_template_footer()
         html_doc = html_header <> html_bodycontent <> html_footer
@@ -42,6 +42,16 @@ defmodule Eeb.Convert do
     end
   end
 
+  def pretty_codeblocks(bin) do
+    bin = Regex.replace(~r/<pre><code(\s+class=\"\")?>\s*iex&gt;/,
+                        bin, ~S(<pre><code class="iex elixir">iex&gt;))
+    bin = Regex.replace(~r/<pre><code(\s+class=\"\")?>/,
+                        bin, ~S(<pre><code class="elixir">))
+    bin = Regex.replace(~r/<pre><code(\s+class=\"elixir\")?>/,
+                        bin, ~S(<pre><code class="elixir">))
+    bin
+  end
+  
   def get_temmplate_header(title \\ "eeb") do
     config = ConfigUtils.build_config();
     page = %{
