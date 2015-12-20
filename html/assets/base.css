@@ -1,0 +1,14 @@
+.ui.header:first-child {
+    margin-top: 20px;
+}
+
+h1.ui.header {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+}
+

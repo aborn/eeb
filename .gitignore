@@ -3,6 +3,6 @@
 /test/tmp
 /npm-debug.log
 /node_modules
-/html
+/html/*.html
 posts/test*
 *~
