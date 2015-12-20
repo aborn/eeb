@@ -1,5 +1,5 @@
 # eeb
-Elixir Extensible Blog  
+Elixir Extensible Blog, http://eeb.aborn.me/  
 [![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)
 
 ## Installation
