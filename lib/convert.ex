@@ -2,7 +2,13 @@ defmodule Eeb.Convert do
   @moduledoc """
   将markdown文件转化成html文档
   """
-  def blog_files() do
+
+  @doc
+  def convert_markdown_blogs_to_html() do
+    files = get_blog_files()
+  end
+
+  def get_blog_files() do
     case File.ls(post_path()) do
       {:ok, files} ->
         Enum.filter(files, &(is_file_supported(&1)))
