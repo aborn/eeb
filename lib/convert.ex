@@ -3,11 +3,42 @@ defmodule Eeb.Convert do
   将markdown文件转化成html文档
   """
 
-  @doc
+  @doc """
+  将markdown文件转换成html
+  """
   def convert_markdown_blogs_to_html() do
     files = get_blog_files()
+    html_path = html_path();
+    unless html_path_check(html_path) do
+      raise "Generate html failed!"
+    end
+    
   end
 
+  def html_path_check(html_path) do
+    unless File.exists?(html_path) do
+      case File.mkdir_p(html_path) do
+        :ok ->
+          Hex.Shell.info("create html path #{html_path} success")
+        {:error, :eacces} ->
+          Hex.Shell.error("missing search or write permissions for the parent directories of #{html_path}")
+        {:error, :enospc} ->
+          Hex.Shell.error("there is a no space left on the device")
+        {:error, :enotdir} ->
+          Hex.Shell.error("#{html_path}  is not a directory")
+        _ ->
+          Hex.Shell.error("unknown exception")
+      end
+    end
+    
+    is_path_dir = File.dir?(html_path)
+    unless is_path_dir do
+      Hex.Shell.error("#{html_path}  is not a directory")
+    end
+
+    is_path_dir
+  end
+  
   def get_blog_files() do
     case File.ls(post_path()) do
       {:ok, files} ->
@@ -35,6 +66,10 @@ defmodule Eeb.Convert do
     Path.join(__DIR__, "../posts/") |> Path.expand()
   end
 
+  def html_path() do
+    Path.join(__DIR__, "../html/") |> Path.expand()
+  end
+  
   def debug() do
     IO.puts "path:" <> post_path()
   end
