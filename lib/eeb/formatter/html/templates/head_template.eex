@@ -8,6 +8,7 @@
     <title><%= page.title %> – <%= config.project %> v<%= config.version %></title>
     <link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/highlight.js/<%= config.highlight %>/styles/github.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/base.css">
   </head>
   <body>
     <div class="ui text container">

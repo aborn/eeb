@@ -49,6 +49,8 @@ defmodule Eeb.Convert do
                         bin, ~S(<pre><code class="elixir">))
     bin = Regex.replace(~r/<pre><code(\s+class=\"elixir\")?>/,
                         bin, ~S(<pre><code class="elixir">))
+    bin = Regex.replace(~r/<h1>/,
+                        bin, ~S(<h1 class="ui header">))
     bin
   end
   
