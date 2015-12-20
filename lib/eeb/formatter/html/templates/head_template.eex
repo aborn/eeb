@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="ExDoc v<%= ExDoc.version %>">
+    <meta name="generator" content="eeb v<%= config.version %>">
     <title><%= page.title %> – <%= config.project %> v<%= config.version %></title>
-    <script src="dist/sidebar_items.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/highlight.js/8.9.1/styles/googlecode.min.css">
   </head>
   <body>

@@ -10,6 +10,9 @@
   </div>
 </section>
 </div>
-  
+
+<script src="http://oss.maxcdn.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.js"></script>
+<script src="http://oss.maxcdn.com/highlight.js/8.9.1/highlight.min.js"></script>
   </body>
 </html>

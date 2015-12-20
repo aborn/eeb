@@ -9,6 +9,7 @@ defmodule Eeb.Convert do
   
   @doc """
   将markdown文件转换成html
+  Eeb.Convert.convert_markdown_blogs_to_html()
   """
   def convert_markdown_blogs_to_html() do
     files = get_blog_files()
