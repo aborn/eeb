@@ -3,6 +3,8 @@ defmodule Eeb.Convert do
   将markdown文件转化成html文档
   """
 
+  alias Eeb.Formatter.HTML.Templates
+  
   @doc """
   将markdown文件转换成html
   """
@@ -86,15 +88,16 @@ defmodule Eeb.Convert do
   得到博客文章的目录，默认为项目根目录下的posts
   """
   def post_path() do
-    Path.join(__DIR__, "../posts/") |> Path.expand()
+    Path.join(__DIR__, "../../posts/") |> Path.expand()
   end
 
   def html_path() do
-    Path.join(__DIR__, "../html/") |> Path.expand()
+    Path.join(__DIR__, "../../html/") |> Path.expand()
   end
   
   def debug() do
-    IO.puts "path:" <> post_path()
+    output = Path.join(html_path(), "test.html")
+    File.write!(output, Templates.test("测试"))
   end
 end
 
