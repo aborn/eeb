@@ -28,6 +28,7 @@ defmodule Eeb.Convert do
         html_doc = Earmark.to_html(content)
         File.write(file_out_put, html_doc)
         Hex.Shell.info("success process file:" <> file)
+        Hex.Shell.info("  output file:" <> file_out_put)
       {:error, _} ->
         Hex.Shell.error("error in process file: #{file}")
     end
