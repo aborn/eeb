@@ -5,7 +5,9 @@ defmodule Eeb.Formatter.HTML.Templates do
   require EEx
   
   templates = [
-    test: [:title],     # only for test
+    test: [:page],     # only for test
+    footer_template: [:config],
+    head_template: [:config, :page],
   ]
 
   Enum.each templates, fn({ name, args }) ->

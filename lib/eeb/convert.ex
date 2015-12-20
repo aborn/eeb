@@ -1,9 +1,11 @@
 defmodule Eeb.Convert do
+  
   @moduledoc """
   将markdown文件转化成html文档
   """
 
   alias Eeb.Formatter.HTML.Templates
+  alias Eeb.ConfigUtils
   
   @doc """
   将markdown文件转换成html
@@ -27,7 +29,10 @@ defmodule Eeb.Convert do
     Hex.Shell.info("process file:" <> file <> "...")
     case File.read(file) do
       {:ok, content} ->
-        html_doc = Earmark.to_html(content)
+        html_bodycontent = Earmark.to_html(content)
+        html_header = get_temmplate_header()
+        html_footer = get_template_footer()
+        html_doc = html_header <> html_bodycontent <> html_footer
         File.write(file_out_put, html_doc)
         Hex.Shell.info("success process file:" <> file)
         Hex.Shell.info("  output file:" <> file_out_put)
@@ -36,6 +41,19 @@ defmodule Eeb.Convert do
     end
   end
 
+  def get_temmplate_header(title \\ "eeb") do
+    config = ConfigUtils.build_config();
+    page = %{
+      :title => title
+    }
+    Templates.head_template(config, page)
+  end
+
+  def get_template_footer() do
+    config = ConfigUtils.build_config();
+    Templates.footer_template(config)
+  end
+  
   def get_file_name_without_suffix(file) do
     String.split(file, ".") |> hd
   end
@@ -97,7 +115,10 @@ defmodule Eeb.Convert do
   
   def debug() do
     output = Path.join(html_path(), "test.html")
-    File.write!(output, Templates.test("测试"))
+    config = %Eeb.Config{
+      version: ConfigUtils.version()
+    }
+    File.write!(output, Templates.test(config))
   end
 end
 
