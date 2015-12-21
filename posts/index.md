@@ -13,8 +13,26 @@ This is a list.
 ## code style
 This is a code
 ```
-   def get_template_footer() do
-      config = ConfigUtils.build_config()
-      Templates.footer_template(config)
-   end
+def get_template_footer() do
+    config = ConfigUtils.build_config()
+    Templates.footer_template(config)
+end
 ```
+
+## BLOCKQUOTES
+Blockquote test
+> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+> 
+> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+> id sem consectetuer libero luctus adipiscing.
+
+## EMPHASIS
+*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
