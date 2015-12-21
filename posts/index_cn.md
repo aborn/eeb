@@ -1,14 +1,15 @@
-# This is title
-This is a blog test!
+# 博客标题
+这是一篇测试博客
 
 ## eeb
 Eeb is elixir extensible static blog generator, github [eeb](https://github.com/aborn/eeb).
 
-## usage
-This is a list.
-1. install elixir env
-2. deploy this project
-3. write blog in post
+## 安装方法
+使用以下步骤
+1. 安装elixir语言环境
+2. mix deps.get 
+3. 写博客
+4. mix eeb.blog
 
 ## code style
 This is a code
