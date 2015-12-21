@@ -1,8 +1,8 @@
-# 这是标题
+# This is title 这是标题
 This is a blog test!这是测试博客！
 
 ## eeb
-eeb means elixir earmark blog, githb [eeb](https://github.com/aborn/eeb)
+Eeb is elixir extensible static blog generator, github [eeb](https://github.com/aborn/eeb).
 
 ## usage
 This is a list.
