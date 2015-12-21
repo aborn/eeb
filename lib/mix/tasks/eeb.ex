@@ -18,7 +18,12 @@ defmodule Mix.Tasks.Eeb do
     Mix.shell.info "Eeb v" <> Eeb.version
     Mix.shell.info "Eeb is elixir extensible blog platform."
     line_break()
-    Mix.shell.info "mix eeb.blog generate blogs."
+    if Version.match?(System.version, ">= 1.1.1") do
+      Hex.Shell.info "Available tasks:"
+      line_break()
+      Mix.Task.run("help", ["--search", "eeb."])
+      line_break()
+    end
   end
 
   def line_break(), do: Mix.shell.info ""
