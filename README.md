@@ -17,3 +17,12 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         def application do
           [applications: [:eeb]]
         end
+
+## Usage
+```
+mix eeb          ## print eeb help info
+mix eeb.blog     ## generate blogs from posts/ dir to html/
+```
+
+## Update
+2015-12-21
