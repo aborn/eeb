@@ -5,6 +5,7 @@ This is a blog test!这是测试博客！
 eeb means elixir earmark blog, githb [eeb](https://github.com/aborn/eeb)
 
 ## usage
+This is a list.
 1. install elixir env
 2. deploy this project
 3. write blog in post
