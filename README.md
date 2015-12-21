@@ -19,7 +19,7 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
         end
 
 ## Usage
-```
+```elixir
 mix eeb          ## print eeb help info
 mix eeb.blog     ## generate blogs from posts/ dir to html/
 ```
