@@ -12,7 +12,6 @@ def deps do
     [{:eeb, "~> 0.0.1"}]
 end
 ```
-
 2. Ensure eeb is started before your application:
 ```elixir
 def application do

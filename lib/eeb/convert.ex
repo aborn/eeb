@@ -31,7 +31,8 @@ defmodule Eeb.Convert do
     case File.read(file) do
       {:ok, content} ->
         html_bodycontent = Earmark.to_html(content) |> pretty_codeblocks
-        html_header = get_temmplate_header()
+        title = Earmark.to_html(content) |> get_title
+        html_header = get_template_header(title)
         html_footer = get_template_footer()
         html_doc = html_header <> html_bodycontent <> html_footer
         File.write(file_out_put, html_doc)
@@ -53,8 +54,21 @@ defmodule Eeb.Convert do
                         bin, ~S(<h1 class="ui header">))
     bin
   end
+
+  @doc """
+  获得文章标题
+  """
+  def get_title(content) do
+    list = String.split(content, ~r{<h1>|</h1>})
+    cond do
+      length(list) > 1 ->
+        tl(list) |> hd
+      true ->
+        "eeb"
+    end
+  end
   
-  def get_temmplate_header(title \\ "eeb") do
+  def get_template_header(title \\ "eeb") do
     config = ConfigUtils.build_config();
     page = %{
       :title => title
