@@ -2,6 +2,10 @@ defmodule Eeb.Style do
   @moduledoc """
   处理前端样式
   """
+
+  @doc """
+  代码块的处理
+  """
   def pretty_codeblocks(bin) do
     bin = Regex.replace(~r/<pre><code(\s+class=\"\")?>\s*iex&gt;/,
                         bin, ~S(<pre><code class="iex elixir">iex&gt;))

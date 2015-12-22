@@ -1,5 +1,5 @@
 # eeb
-Elixir Extensible Blog, http://eeb.aborn.me/  
+Elixir Extendable Blog, http://eeb.aborn.me/  
 [![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)
 
 ## Installation
@@ -26,4 +26,4 @@ mix eeb.blog     ## generate blogs from posts/ dir to html/
 ```
 
 ## Update
-2015-12-21
+2015-12-22
