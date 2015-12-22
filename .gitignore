@@ -6,3 +6,8 @@
 /html/*.html
 posts/test*
 *~
+npm-debug.log
+.idea/
+*.iml
+html/assets/sidebar-doc*
+html/fonts/
