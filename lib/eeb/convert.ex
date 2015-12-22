@@ -6,6 +6,7 @@ defmodule Eeb.Convert do
 
   alias Eeb.Formatter.HTML.Templates
   alias Eeb.ConfigUtils
+  alias Eeb.Style
   
   @doc """
   将markdown文件转换成html
@@ -30,7 +31,7 @@ defmodule Eeb.Convert do
     Hex.Shell.info("process file:" <> file <> "...")
     case File.read(file) do
       {:ok, content} ->
-        html_bodycontent = Earmark.to_html(content) |> pretty_codeblocks
+        html_bodycontent = Earmark.to_html(content) |> Style.pretty_codeblocks
         title = Earmark.to_html(content) |> get_title
         html_header = get_template_header(title)
         html_footer = get_template_footer()
@@ -41,18 +42,6 @@ defmodule Eeb.Convert do
       {:error, _} ->
         Hex.Shell.error("error in process file: #{file}")
     end
-  end
-
-  def pretty_codeblocks(bin) do
-    bin = Regex.replace(~r/<pre><code(\s+class=\"\")?>\s*iex&gt;/,
-                        bin, ~S(<pre><code class="iex elixir">iex&gt;))
-    bin = Regex.replace(~r/<pre><code(\s+class=\"\")?>/,
-                        bin, ~S(<pre><code class="elixir">))
-    bin = Regex.replace(~r/<pre><code(\s+class=\"elixir\")?>/,
-                        bin, ~S(<pre><code class="elixir">))
-    bin = Regex.replace(~r/<h1>/,
-                        bin, ~S(<h1 class="ui header">))
-    bin
   end
 
   @doc """
