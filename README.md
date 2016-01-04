@@ -26,4 +26,4 @@ mix eeb.blog     ## generate blogs from posts/ dir to html/
 ```
 
 ## Update
-2015-12-22
+2016-01-04
