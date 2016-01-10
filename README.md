@@ -23,7 +23,8 @@ end
 ```mix
 mix eeb          ## print eeb help info
 mix eeb.blog     ## generate blogs from posts/ dir to html/
+mix eeb.index    ## generate/regenerate this index.html file for blog
 ```
 
 ## Update
-2016-01-04
+2016-01-10
