@@ -1,5 +1,5 @@
 defmodule Eeb.Convert do
-  
+
   @moduledoc """
   将markdown文件转化成html文档
   """
@@ -9,7 +9,7 @@ defmodule Eeb.Convert do
   alias Eeb.Style
   alias Eeb.Index
   alias Eeb.BlogPath
-  
+
   @doc """
   将markdown文件转换成html
   Eeb.Convert.convert_markdown_blogs_to_html()
@@ -29,7 +29,7 @@ defmodule Eeb.Convert do
     html_path = BlogPath.html_path()
     file_out_put = Path.join(html_path, get_file_name_without_suffix(file) <> ".html")
     file = Path.join(blog_path, file)
-    
+
     Hex.Shell.info("process file:" <> file <> "...")
     case File.read(file) do
       {:ok, content} ->
@@ -58,7 +58,7 @@ defmodule Eeb.Convert do
         "eeb"
     end
   end
-  
+
   def get_template_header(title \\ "eeb") do
     config = ConfigUtils.build_config();
     page = %{
@@ -71,11 +71,11 @@ defmodule Eeb.Convert do
     config = ConfigUtils.build_config();
     Templates.footer_template(config)
   end
-  
+
   def get_file_name_without_suffix(file) do
     String.split(file, ".") |> hd
   end
-  
+
   def html_path_check(html_path) do
     unless File.exists?(html_path) do
       case File.mkdir_p(html_path) do
@@ -91,7 +91,7 @@ defmodule Eeb.Convert do
           Hex.Shell.error("unknown exception")
       end
     end
-    
+
     is_path_dir = File.dir?(html_path)
     unless is_path_dir do
       Hex.Shell.error("#{html_path}  is not a directory")
@@ -99,7 +99,7 @@ defmodule Eeb.Convert do
 
     is_path_dir
   end
-  
+
   def get_blog_files() do
     case File.ls(BlogPath.post_path()) do
       {:ok, files} ->
@@ -120,13 +120,21 @@ defmodule Eeb.Convert do
   def is_file_supported(x) do
     x =~ ~r".md$"
   end
-  
+
   def debug() do
     output = Path.join(BlogPath.html_path(), "test.html")
+    outputBlog = Path.join(BlogPath.html_path(), "bb.html")
     config = %Eeb.Config{
       version: ConfigUtils.version()
     }
+    blog = %Eeb.Blog{
+      url: "index.html",
+      title: "中国好声音",
+      hits: "0",
+      comments: "0",
+      like: "0"
+    }
     File.write!(output, Templates.test(config))
+    File.write!(outputBlog, Templates.index_blog_item(blog))
   end
 end
-

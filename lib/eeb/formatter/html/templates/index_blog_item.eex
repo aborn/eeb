@@ -1,0 +1,16 @@
+<li class="item">
+    <div class="list-top">
+        <i class="wait icon"></i>
+        <span class="time" data-shared-at="2016-01-10T10:16:06+08:00"></span>
+    </div>
+    <h4 class="title"><a target="_blank" href="<%= blog.url %>"><%= blog.title %></a></h4>
+    <div class="list-footer">
+        <a target="_blank" href="<%= blog.url %>">
+          阅读 <%= blog.hits %>
+        </a>
+        <a target="_blank" href="<%= blog.url %>">
+          · 评论 <%= blog.comments %>
+        </a>
+        <span> · 喜欢 <%= blog.like %></span>
+    </div>
+</li>

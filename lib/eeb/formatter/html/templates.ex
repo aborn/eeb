@@ -8,6 +8,7 @@ defmodule Eeb.Formatter.HTML.Templates do
     test: [:page],     # only for test
     footer_template: [:config],
     head_template: [:config, :page],
+    index_blog_item: [:blog]
   ]
 
   Enum.each templates, fn({ name, args }) ->
