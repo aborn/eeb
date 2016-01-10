@@ -13,6 +13,9 @@ defmodule Eeb.Index do
     Path.join(BlogPath.html_path, @filename)
   end
 
+  @doc """
+  生成首页
+  """
   def generate_index_page() do
     files = BlogUtils.get_blog_file_name_list()
     blogItemList = build_blog_item_list(files)
@@ -29,7 +32,7 @@ defmodule Eeb.Index do
     File.write(indexFileName, indexHtmlContent)
   end
 
-  def build_blog_item_list(files) do
+  defp build_blog_item_list(files) do
     Enum.map(files, fn file ->
       blog_path = Path.join(BlogPath.post_path(), file)
       blog_url = BlogUtils.get_file_name_without_suffix(file) <> ".html"
