@@ -66,4 +66,8 @@ defmodule Eeb.BlogUtils do
     end
   end
 
+  def get_file_name_without_suffix(file) do
+    String.split(file, ".") |> hd
+  end
+
 end

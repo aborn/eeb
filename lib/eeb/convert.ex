@@ -28,7 +28,7 @@ defmodule Eeb.Convert do
   def convert_each_item(file) do
     blog_path = BlogPath.post_path()
     html_path = BlogPath.html_path()
-    file_out_put = Path.join(html_path, get_file_name_without_suffix(file) <> ".html")
+    file_out_put = Path.join(html_path, BlogUtils.get_file_name_without_suffix(file) <> ".html")
     file = Path.join(blog_path, file)
 
     title = BlogUtils.get_blog_title(file);
@@ -60,10 +60,6 @@ defmodule Eeb.Convert do
   def get_template_footer() do
     config = ConfigUtils.build_config();
     Templates.footer_template(config)
-  end
-
-  def get_file_name_without_suffix(file) do
-    String.split(file, ".") |> hd
   end
 
   def html_path_check(html_path) do
