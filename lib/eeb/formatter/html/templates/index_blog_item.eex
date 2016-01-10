@@ -1,7 +1,7 @@
 <li class="item">
     <div class="list-top">
         <i class="wait icon"></i>
-        <span class="time" data-shared-at="2016-01-10T10:16:06+08:00"></span>
+        <span class="time" data-shared-at="<%= blog.time %>"></span>
     </div>
     <h4 class="title"><a target="_blank" href="<%= blog.url %>"><%= blog.title %></a></h4>
     <div class="list-footer">

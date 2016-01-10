@@ -9,13 +9,14 @@ defmodule Eeb.Convert do
   alias Eeb.Style
   alias Eeb.Index
   alias Eeb.BlogPath
+  alias Eeb.BlogUtils
 
   @doc """
   将markdown文件转换成html
   Eeb.Convert.convert_markdown_blogs_to_html()
   """
   def convert_markdown_blogs_to_html() do
-    files = get_blog_files()
+    files = BlogUtils.get_blog_file_name_list()
     html_path = BlogPath.html_path()
     unless html_path_check(html_path) do
       raise "Generate html failed!"
@@ -100,27 +101,6 @@ defmodule Eeb.Convert do
     is_path_dir
   end
 
-  def get_blog_files() do
-    case File.ls(BlogPath.post_path()) do
-      {:ok, files} ->
-        Enum.filter(files, &(is_file_supported(&1)))
-      {:error, reason} ->
-        IO.puts "File.ls error #{reason}"
-        []
-      _ ->
-        IO.puts "other error exception"
-        []
-    end
-  end
-
-  @doc """
-  是否为支持类型的转换文件，暂时只保留以md结尾的文件
-  TODO 将来是否支持.org格式文件?
-  """
-  def is_file_supported(x) do
-    x =~ ~r".md$"
-  end
-
   def debug() do
     output = Path.join(BlogPath.html_path(), "test.html")
     outputBlog = Path.join(BlogPath.html_path(), "bb.html")
@@ -132,9 +112,20 @@ defmodule Eeb.Convert do
       title: "中国好声音",
       hits: "0",
       comments: "0",
-      like: "0"
+      like: "0",
+      time: "2016-01-10T10:16:06+08:00"
     }
+
+    blog2 = %Eeb.Blog{
+      url: "index.html",
+      title: "中国好声音2",
+      hits: "0",
+      comments: "0",
+      like: "0",
+      time: "2016-01-10T10:16:06+08:00"
+    }
+
     File.write!(output, Templates.test(config))
-    File.write!(outputBlog, Templates.index_blog_item(blog))
+    File.write!(outputBlog, Templates.index_blog_item(blog) <> Templates.index_blog_item(blog2))
   end
 end
