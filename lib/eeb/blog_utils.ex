@@ -47,7 +47,7 @@ defmodule Eeb.BlogUtils do
   def get_blog_title(filename) do
     case File.read(filename) do
       {:ok, content} ->
-        Earmark.to_html(content) |> get_title
+        Earmark.to_html(content) |> get_title(get_file_name_without_suffix(filename))
       {:error, _} ->
         Hex.Shell.error("error in process file: #{filename}")
     end
@@ -56,18 +56,29 @@ defmodule Eeb.BlogUtils do
   @doc """
   获得文章标题
   """
-  def get_title(content) do
+  def get_title(content, default \\ "eeb") do
     list = String.split(content, ~r{<h1>|</h1>})
     cond do
       length(list) > 1 ->
         tl(list) |> hd
       true ->
-        "eeb"
+        default
     end
   end
 
+  @doc """
+  获得文件名
+  如： abc.md  输出： abc
+      /ab/abd.md 输出：abd
+  """
   def get_file_name_without_suffix(file) do
-    String.split(file, ".") |> hd
+    fileName = String.split(file, ".") |> hd
+    cond do
+      fileName =~ ~r"/" ->
+        String.split(fileName, "/") |> List.last()
+      true ->
+        fileName
+    end
   end
 
 end

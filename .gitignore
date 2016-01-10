@@ -5,6 +5,7 @@
 /node_modules
 /html/*.html
 posts/test*
+posts/测试*
 *~
 npm-debug.log
 .idea/
