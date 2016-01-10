@@ -12,7 +12,9 @@ defmodule Eeb.BlogUtils do
   def get_blog_file_name_list() do
     case File.ls(BlogPath.post_path()) do
       {:ok, files} ->
-        Enum.filter(files, &(is_file_legal(&1)))
+        # 按时间从最新到最老排序
+        sorted_files = Enum.sort(files,  &(blog_file_time(&1) >= blog_file_time(&2)))
+        Enum.filter(sorted_files, &(is_file_legal(&1)))
       {:error, reason} ->
         IO.puts "File.ls error #{reason}"
         []
@@ -99,5 +101,19 @@ defmodule Eeb.BlogUtils do
         Hex.Shell.error("error in read file #{file}")
     end
   end
+
+  def get_file_mtime_posix(file) do
+    case File.lstat(file, [{:time, :posix}]) do
+      {:ok, stat} ->
+        stat.mtime
+      {:error, _} ->
+        0
+    end
+  end
+
+  defp blog_file_time(file) do
+    get_file_mtime_posix(Path.join(BlogPath.post_path, file))
+  end
+  
 
 end
