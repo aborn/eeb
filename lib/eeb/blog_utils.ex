@@ -111,9 +111,8 @@ defmodule Eeb.BlogUtils do
     end
   end
 
+  # 博客的修改时间
   defp blog_file_time(file) do
     get_file_mtime_posix(Path.join(BlogPath.post_path, file))
   end
-  
-
 end

@@ -1,15 +1,15 @@
 $(document).ready(function() {
-  $('pre code').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
 });
 
 
 $('.menu .item').tab();
 
 /*$('.blog-list li').map(function(currentValue, index){
-    console.log('ooooo')
-});*/
+ console.log('ooooo')
+ });*/
 
 var DateDiff = {
 
@@ -80,10 +80,18 @@ var DateDiff = {
     }
 };
 
-$('.blog-list li').each(function(){
-    var spanPlug = $(this).find('.list-top>span');
-    var publishTime = new Date(spanPlug.attr('data-shared-at'));
-    var currentTime = new Date();
-    spanPlug.html(DateDiff.getDesc(publishTime, currentTime));
-    console.log('dfd')
-});
+function doTimeAction() {
+    $('.blog-list li').each(function(){
+        var spanPlug = $(this).find('.list-top>span');
+        var publishTime = new Date(spanPlug.attr('data-shared-at'));
+        var currentTime = new Date();
+        spanPlug.html(DateDiff.getDesc(publishTime, currentTime));
+    });
+}
+
+function timer() {
+    doTimeAction()
+    setTimeout("timer()",1000);
+}
+
+timer();
