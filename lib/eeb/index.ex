@@ -16,10 +16,17 @@ defmodule Eeb.Index do
   def generate_index_page() do
     files = BlogUtils.get_blog_file_name_list()
     blogItemList = build_blog_item_list(files)
+
+    # 获得博客列表内容
     indexContent = Enum.map(blogItemList, fn item ->
       Templates.index_blog_item(item)
     end) |> Enum.join("<br/>")
-    indexContent
+    
+    indexFileName = get_index_file_name()
+    html_header = Templates.index_head() 
+    html_footer = Templates.index_footer()
+    indexHtmlContent = html_header <> indexContent <> html_footer
+    File.write(indexFileName, indexHtmlContent)
   end
 
   def build_blog_item_list(files) do

@@ -23,6 +23,7 @@ defmodule Eeb.Convert do
     end
 
     Enum.each(files, &(convert_each_item(&1)))
+    Index.generate_index_page()
   end
 
   def convert_each_item(file) do
