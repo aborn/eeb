@@ -31,11 +31,13 @@ defmodule Eeb.Convert do
     file_out_put = Path.join(html_path, get_file_name_without_suffix(file) <> ".html")
     file = Path.join(blog_path, file)
 
+    title = BlogUtils.get_blog_title(file);
+    
     Hex.Shell.info("process file:" <> file <> "...")
     case File.read(file) do
       {:ok, content} ->
         html_bodycontent = Earmark.to_html(content) |> Style.pretty_codeblocks
-        title = Earmark.to_html(content) |> get_title
+
         html_header = get_template_header(title)
         html_footer = get_template_footer()
         html_doc = html_header <> html_bodycontent <> html_footer
@@ -44,19 +46,6 @@ defmodule Eeb.Convert do
         Hex.Shell.info("  output file:" <> file_out_put)
       {:error, _} ->
         Hex.Shell.error("error in process file: #{file}")
-    end
-  end
-
-  @doc """
-  获得文章标题
-  """
-  def get_title(content) do
-    list = String.split(content, ~r{<h1>|</h1>})
-    cond do
-      length(list) > 1 ->
-        tl(list) |> hd
-      true ->
-        "eeb"
     end
   end
 
