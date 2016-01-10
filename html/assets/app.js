@@ -95,3 +95,5 @@ function timer() {
 }
 
 timer();
+
+$('.popup').popup();
