@@ -26,6 +26,14 @@ h1.ui.header {
     box-sizing: border-box;
 }
 
+.avatar-thumb img {
+    width: 25px;
+    height: 25px;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
 ul {
     list-style-type: none;
 }
@@ -78,12 +86,24 @@ ul {
 
 a:focus,a:hover {
     color: #000000;
-
 }
 
 
 a {
     color: #555555;
+}
+
+a.author-name {
+    color: #4594C7;
+}
+
+.author-info {
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eeeeee;
+    overflow: hidden;
+    font-size: 14px;
+    color: #999999;
 }
 
 
