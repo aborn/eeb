@@ -4,6 +4,7 @@ defmodule Eeb.BlogUtils do
   """
 
   alias Eeb.BlogPath
+  use Timex
   
   @doc """
   获得所有博客的名字列表
@@ -69,7 +70,7 @@ defmodule Eeb.BlogUtils do
   @doc """
   获得文件名
   如： abc.md  输出： abc
-      /ab/abd.md 输出：abd
+  /ab/abd.md 输出：abd
   """
   def get_file_name_without_suffix(file) do
     fileName = String.split(file, ".") |> hd
@@ -78,6 +79,24 @@ defmodule Eeb.BlogUtils do
         String.split(fileName, "/") |> List.last()
       true ->
         fileName
+    end
+  end
+
+  @doc """
+  获得文件最后一次修改时间
+  """
+  def get_file_mtime(file) do
+    case File.lstat(file, [{:time, :local}]) do
+      {:ok, stat} ->
+        mtime = Date.from(stat.mtime, :local)
+        case mtime |> DateFormat.format("{ISO}") do
+          {:ok, timeString} ->
+            timeString
+          _ ->
+            Hex.Shell.error("error convert timer")
+        end
+      {:error, _} ->
+        Hex.Shell.error("error in read file #{file}")
     end
   end
 

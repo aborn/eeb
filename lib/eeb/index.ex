@@ -37,13 +37,14 @@ defmodule Eeb.Index do
       blog_path = Path.join(BlogPath.post_path(), file)
       blog_url = BlogUtils.get_file_name_without_suffix(file) <> ".html"
       blog_title = BlogUtils.get_blog_title(blog_path)
+      blog_time = BlogUtils.get_file_mtime(blog_path)
       %Eeb.Blog {
         url: blog_url,
         title: blog_title,
         hits: "0",
         comments: "0",
         like: "0",
-        time: "2016-01-10T10:16:06+08:00"
+        time: blog_time #"2016-01-10T10:16:06+08:00"
       }
     end)
   end

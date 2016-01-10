@@ -11,7 +11,7 @@ Eeb is elixir extensible static blog generator, github [eeb](https://github.com/
 3. 写博客
 4. mix eeb.blog
 
-## code style
+## 代码风格
 This is a code
 ```
 def get_template_footer() do
@@ -20,7 +20,7 @@ def get_template_footer() do
 end
 ```
 
-## BLOCKQUOTES
+## 引用
 Blockquote test
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
