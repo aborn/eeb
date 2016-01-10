@@ -11,5 +11,6 @@ npm-debug.log
 *.iml
 html/assets/sidebar-doc*
 html/fonts/
-demo/
 test/assets/
+demo/assets/
+demo/test.html
