@@ -52,10 +52,15 @@ defmodule Eeb.Convert do
 
   def get_template_header(title \\ "eeb") do
     config = ConfigUtils.build_config();
-    page = %{
-      :title => title
+    # page = % {
+    #   :title => title
+    # }
+    #
+    blog = %Eeb.Blog {
+      title: title,
+      time: "2015.07.06 23:39"
     }
-    Templates.head_template(config, page)
+    Templates.head_template(config, blog)
   end
 
   def get_template_footer() do

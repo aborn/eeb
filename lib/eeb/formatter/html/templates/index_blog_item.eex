@@ -3,7 +3,7 @@
         <i class="wait icon"></i>
         <span class="time" data-shared-at="<%= blog.time %>"></span>
     </div>
-    <h4 class="title"><a target="_blank" href="<%= blog.url %>"><%= blog.title %></a></h4>
+    <h4 class="title"><a href="<%= blog.url %>"><%= blog.title %></a></h4>
     <div class="list-footer">
         <a target="_blank" href="<%= blog.url %>">
           阅读 <%= blog.hits %>

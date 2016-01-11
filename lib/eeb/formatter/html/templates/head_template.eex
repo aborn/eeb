@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="eeb v<%= config.version %>">
-    <title><%= page.title %> – <%= config.project %> v<%= config.version %></title>
+    <title><%= blog.title %> – <%= config.project %> v<%= config.version %></title>
     <link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/highlight.js/<%= config.highlight %>/styles/github.min.css">
     <link rel="stylesheet" type="text/css" href="assets/base.css">
@@ -27,9 +27,9 @@
                             <a class="author-name blue-link" href="index.html">
                                 <span>aborn</span>
                             </a>
-                            <span class="popup" data-content="最后编辑于 2015.07.06 23:39" data-variation="inverted">2015.07.05 14:16*</span>
+                            <span class="popup" data-content="最后编辑于 2015.07.06 23:39" data-variation="inverted"><%= blog.time %>*</span>
                         </div>
-                        <span>写了1828字</span>，<span>被1人关注</span>，<span>获得了0个喜欢</span>
+                        <span>写了<%= blog.word_count %>字</span>，<span>被<%= blog.hits %>人访问</span>，<span>获得了<%= blog.like %>个喜欢</span>
                     </div>
                 </div>
             </div>
