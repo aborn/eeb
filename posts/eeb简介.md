@@ -1,20 +1,22 @@
 # eeb介绍
-eeb是用elixir语言版本的一种静态博客生成器。对就的gith项目为[https://github.com/aborn/eeb](https://github.com/aborn/eeb)。
+eeb是elixir语言版本的一种静态博客生成器。对就的github项目为[https://github.com/aborn/eeb](https://github.com/aborn/eeb)。
 
 ## 安装方法
 使用以下步骤
 1. 安装elixir语言环境
-2. mix deps.get 
-3. 写博客
-4. mix eeb.blog
+2. git clone https://github.com/aborn/eeb.git
+3. cd eeb
+4. mix deps.get 
+5. 写博客
+6. mix eeb.blog
 
-## 代码风格
-This is a code
-```
-def get_template_footer() do
-    config = ConfigUtils.build_config()
-    Templates.footer_template(config)
-end
+## 安装
+安装完elixir语言环境后，一键安装:
+```shell
+git clone https://github.com/aborn/eeb.git
+cd eeb
+mix deps.get
+mix eeb   # eeb相关命令介绍
 ```
 
 ## 引用

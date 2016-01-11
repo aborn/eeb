@@ -7,15 +7,14 @@ This is a list.
 2. deploy this project
 3. write blog in post
 
-## code style
-This is a code
+## install
+after install elixir-language env, run script:
+```shell
+git clone https://github.com/aborn/eeb.git
+cd eeb
+mix deps.get
+mix eeb   # eeb相关命令介绍
 ```
-def get_template_footer() do
-    config = ConfigUtils.build_config()
-    Templates.footer_template(config)
-end
-```
-
 ## BLOCKQUOTES
 Blockquote test
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
