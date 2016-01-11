@@ -1,16 +1,14 @@
-# This is title
-This is a blog test!
+# eeb介绍
+eeb是用elixir语言版本的一种静态博客生成器。对就的gith项目为[https://github.com/aborn/eeb](https://github.com/aborn/eeb)。
 
-## eeb
-Eeb is elixir extensible static blog generator, github [eeb](https://github.com/aborn/eeb).
+## 安装方法
+使用以下步骤
+1. 安装elixir语言环境
+2. mix deps.get 
+3. 写博客
+4. mix eeb.blog
 
-## usage
-This is a list.
-1. install elixir env
-2. deploy this project
-3. write blog in post
-
-## code style
+## 代码风格
 This is a code
 ```
 def get_template_footer() do
@@ -19,7 +17,7 @@ def get_template_footer() do
 end
 ```
 
-## BLOCKQUOTES
+## 引用
 Blockquote test
 > This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
 > consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
