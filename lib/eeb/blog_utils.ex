@@ -85,9 +85,9 @@ defmodule Eeb.BlogUtils do
   end
 
   @doc """
-  获得文件最后一次修改时间
+  获得文件最后一次修改时间,返回字符串为ISO格式
   """
-  def get_file_mtime(file) do
+  def get_file_mtime_iso(file) do
     case File.lstat(file, [{:time, :local}]) do
       {:ok, stat} ->
         mtime = Date.from(stat.mtime, :local)
@@ -111,6 +111,26 @@ defmodule Eeb.BlogUtils do
     end
   end
 
+  def get_file_time_normal(file, type \\:mtime) do
+    case File.lstat(file, [{:time, :local}]) do
+      {:ok, stat} ->
+        mtime = Date.from(stat.mtime, :local)
+        ctime = Date.from(stat.ctime, :local)
+        time = mtime
+        unless type == :ctime do
+          time = ctime
+        end
+        case time |> DateFormat.format("%Y-%m-%d %H:%M", :strftime) do
+          {:ok, timeString} ->
+            timeString
+          _ ->
+            "时间末知"
+        end
+      {:error, _} ->
+        "时间末知"
+    end
+  end
+  
   # 博客的修改时间
   defp blog_file_time(file) do
     get_file_mtime_posix(Path.join(BlogPath.post_path, file))
