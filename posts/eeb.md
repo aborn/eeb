@@ -2,10 +2,12 @@
 Eeb is elixir extensible static blog generator, github [eeb](https://github.com/aborn/eeb).
 
 ## usage
-This is a list.
-1. install elixir env
-2. deploy this project
-3. write blog in post
+Install eeb step by step as follows
+2. git clone https://github.com/aborn/eeb.git
+3. cd eeb
+4. mix deps.get 
+5. write blog in post
+6. mix eeb.blog
 
 ## install
 after install elixir-language env, run script:
@@ -13,7 +15,7 @@ after install elixir-language env, run script:
 git clone https://github.com/aborn/eeb.git
 cd eeb
 mix deps.get
-mix eeb   # eeb相关命令介绍
+mix eeb   # show eeb help info
 ```
 ## BLOCKQUOTES
 Blockquote test

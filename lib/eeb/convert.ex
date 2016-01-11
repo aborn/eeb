@@ -59,7 +59,7 @@ defmodule Eeb.Convert do
     blog = %Eeb.Blog {
       title: title,
       time: BlogUtils.get_file_time_normal(file, :ctime),
-      mtime: BlogUtils.get_file_time_normal(file, :mtime),
+      mtime: BlogUtils.get_file_time_normal(file, :atime),
       word_count: word_number
     }
     Templates.head_template(config, blog)
