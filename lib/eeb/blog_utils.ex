@@ -135,4 +135,29 @@ defmodule Eeb.BlogUtils do
   defp blog_file_time(file) do
     get_file_mtime_posix(Path.join(BlogPath.post_path, file))
   end
+
+  @doc """
+  """
+  def count_word(str) do
+    count_chinese_charator(str) + count_english_word(str)
+  end
+  
+  @doc """
+  计算中文个数据
+  """
+  def count_chinese_charator(str) do
+    Enum.filter(String.codepoints(str), fn(x) ->
+      String.length(x) != byte_size(x)
+    end) |> Enum.count
+  end
+
+  @doc """
+  计算英文单词个数据
+  """
+  def count_english_word(str) do
+    Enum.filter(String.codepoints(str), fn(x) ->
+      String.length(x) == byte_size(x)  and
+      String.match?(x, ~r/[a-zA-Z ]+/)
+    end) |> Enum.join |> String.split |> Enum.count
+  end
 end
