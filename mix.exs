@@ -34,4 +34,12 @@ defmodule Eeb.Mixfile do
      {:timex, "~> 1.0.0"},
      {:tzdata, "== 0.1.8", override: true}]  ## https://github.com/bitwalker/timex/issues/86
   end
+
+  defp aliases do
+    [compile: ["deps.check", &unload_hex/1, "compile"],
+     run: [&unload_hex/1, "run"],
+     install: ["archive.build -o eeb.ez", "archive.install eeb.ez --force"],
+     certdata: [&certdata/1]]
+  end
+
 end

@@ -27,4 +27,4 @@ mix eeb.index    ## generate/regenerate this index.html file for blog
 ```
 
 ## Update
-2016-01-11
+2016-01-12
