@@ -9,6 +9,7 @@ eeb是elixir语言版本的博客平台，它由两部分组成：博客生成�
 git clone https://github.com/aborn/eeb.git
 cd eeb
 mix deps.get             # 安装依赖
+mix eeb.blog             # 将posts/下的markdown文件转化成html文档
 mix run --no-halt        # 运行
 ```
 如果想做为daemon 
