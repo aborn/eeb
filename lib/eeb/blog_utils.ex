@@ -143,24 +143,19 @@ defmodule Eeb.BlogUtils do
   end
 
   @doc """
+  计算博客含有多少字
   """
   def count_word(str) do
     count_chinese_charator(str) + count_english_word(str)
   end
-  
-  @doc """
-  计算中文个数据
-  """
-  def count_chinese_charator(str) do
+
+  defp count_chinese_charator(str) do
     Enum.filter(String.codepoints(str), fn(x) ->
       String.length(x) != byte_size(x)
     end) |> Enum.count
   end
 
-  @doc """
-  计算英文单词个数据
-  """
-  def count_english_word(str) do
+  defp count_english_word(str) do
     Enum.filter(String.codepoints(str), fn(x) ->
       String.length(x) == byte_size(x)  and
       String.match?(x, ~r/[a-zA-Z ]+/)
