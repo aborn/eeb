@@ -1,7 +1,7 @@
 # eeb
 Elixir Extendable Blog, http://eeb.aborn.me/  
 [![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)  
-eeb是elixir语言版本的一种静态博客生成器。对就的github项目为[https://github.com/aborn/eeb](https://github.com/aborn/eeb)。
+eeb是elixir语言版本的博客平台，它由两部分组成：博客生成器和webserver。
 
 ## 源码安装
 执行以下命令
@@ -45,4 +45,4 @@ mix eeb.index    ## generate/regenerate this index.html file for blog
 ```
 
 ## 项目更新于
-2016-01-12
+2016-01-13
