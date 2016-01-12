@@ -18,7 +18,7 @@ defmodule Eeb.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [env: [default: :value],
-     applications: [:logger,:tzdata,:earmark]]
+     applications: [:logger,:tzdata]]
   end
 
   # Dependencies can be Hex packages:
