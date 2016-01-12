@@ -18,8 +18,8 @@ defmodule Eeb.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     [env: [default: :value],
-     applications: [:logger,:tzdata,:cowboy]
-    ]
+     applications: [:logger,:tzdata,:cowboy],
+     mod: {EebServer, []}]
   end
 
   # Dependencies can be Hex packages:

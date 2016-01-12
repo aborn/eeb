@@ -5,7 +5,7 @@ defmodule Mix.Tasks.Eeb.Deploy do
   
   def run(args) do
     Mix.shell.info "deploy blog.."
-    {:ok, _} = Plug.Adapters.Cowboy.http Server, []
+    {:ok, _} = Plug.Adapters.Cowboy.http(Server, [])
     Mix.shell.info "finished deploy!"
   end
 end
