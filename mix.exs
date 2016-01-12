@@ -35,8 +35,8 @@ defmodule Eeb.Mixfile do
     [{:earmark, "~> 0.1.19", only: :dev},
      {:ex_doc, "~> 0.11.1", only: :dev},
      {:timex, "~> 1.0.0"},
-     { :cowboy, "~> 1.0" },
-     { :plug, "~> 0.14" },
+     {:cowboy, "~> 1.0" },
+     {:plug, "~> 0.14" },
      {:tzdata, "== 0.1.8", override: true}]  ## https://github.com/bitwalker/timex/issues/86
   end
 
