@@ -11,8 +11,13 @@ cd eeb
 mix deps.get             # 安装依赖
 mix run --no-halt        # 运行
 ```
+如果想做为daemon 
+```
+nohup mix --no-halt >>nohup.out 2>&1
+```
 命令执行完成后，在本地的4000端口监听http请求：
-http://localhost:4000/index.html
+http://localhost:4000/index.html  
+如[http://eeb.aborn.me:4000/index.html](http://eeb.aborn.me:4000/index.html)
 
 ## 通过hex安装源安装[暂时不支持]
 
