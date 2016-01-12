@@ -17,7 +17,8 @@ defmodule Eeb.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger,:tzdata]]
+    [env: [default: :value],
+     applications: [:logger,:tzdata,:earmark]]
   end
 
   # Dependencies can be Hex packages:
@@ -39,7 +40,8 @@ defmodule Eeb.Mixfile do
   defp aliases do
     [compile: ["deps.check", &unload_hex/1, "compile"],
      run: [&unload_hex/1, "run"],
-     install: ["archive.build -o eeb.ez", "archive.install eeb.ez --force"]]
+     install: ["archive.build -o eeb.ez", "archive.install eeb.ez --force"],
+     uninstall: ["archive.uninstall eeb.ez"]]
   end
 
   defp unload_hex(_) do
