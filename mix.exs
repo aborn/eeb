@@ -10,7 +10,8 @@ defmodule Eeb.Mixfile do
      homepage_url: "https://github.com/aborn/eeb",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     test_coverage: [tool: ExCoveralls]]
   end
 
   # Configuration for the OTP application
@@ -37,6 +38,7 @@ defmodule Eeb.Mixfile do
      {:timex, "~> 1.0.0"},
      {:cowboy, "~> 1.0" },
      {:plug, "~> 0.14" },
+     {:excoveralls, "~> 0.4", only: :test},
      {:tzdata, "== 0.1.8", override: true}]  ## https://github.com/bitwalker/timex/issues/86
   end
 
