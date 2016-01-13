@@ -1,6 +1,8 @@
 defmodule EebServer do
   @moduledoc """
+  应用入口
   """
+  
   use Application
 
   def start( _type, _args ) do
@@ -15,6 +17,6 @@ defmodule EebServer do
   end
 
   def run do
-    { :ok, _ } = Plug.Adapters.Cowboy.http(Server, [])
+    {:ok, _} = Plug.Adapters.Cowboy.http(Server, [])
   end
 end

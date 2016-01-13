@@ -8,7 +8,7 @@ defmodule Server do
 
   def init(options) do
     # initialize options
-
+    Hex.Shell.info("eeb running in http://localhost:4000/")
     options
   end
 
@@ -23,6 +23,8 @@ defmodule Server do
 
   def get_content_type(request_path) do
     cond do
+      request_path == "/" ->
+        "text/html"
       request_path =~ ~r".html$" ->
         "text/html"
       request_path =~ ~r".css" ->
@@ -34,6 +36,8 @@ defmodule Server do
   
   def get_file_name(request_path) do
     cond do
+      request_path == "/" ->
+        "index.html"
       request_path =~ ~r".html$" ->
         String.split(request_path, "/") |> List.last()
       true ->
