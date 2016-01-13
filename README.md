@@ -1,6 +1,7 @@
 # eeb
 Elixir Extendable Blog, http://eeb.aborn.me/  
-[![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)  
+[![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)
+[![Coverage Status](https://coveralls.io/repos/aborn/eeb/badge.svg?branch=master&service=github)](https://coveralls.io/github/aborn/eeb?branch=master)   
 eeb是elixir语言版本的博客平台，它由两部分组成：博客生成器和webserver。
 
 ## 源码安装
