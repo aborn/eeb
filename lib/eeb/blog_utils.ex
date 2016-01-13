@@ -24,14 +24,42 @@ defmodule Eeb.BlogUtils do
     end
   end
 
+  def get_blog_image_name_list() do
+    listRoot = get_image_list(Path.join(BlogPath.post_path, "images"))
+    listImages = get_image_list(BlogPath.post_path)
+    listRoot ++ listImages
+  end
+
+  def get_image_list(path) do
+    case File.ls(path) do
+      {:ok, files} ->
+        Enum.filter(files, &(is_image_file(&1)))
+      {:error, reason} ->
+        IO.puts "File.ls error #{reason}"
+        []
+      _ ->
+        IO.puts "other error exception"
+        []
+    end
+  end
+
+  @doc """
+  判断是否为图片
+  """
+  def is_image_file(fileName) do
+    fileName =~ ~r".jpg$|.png$|.jpeg$"
+  end
+  
   @doc """
   文件名是否合法
   """
   def is_file_legal(x) do
-    case "index.md" do
-      ^x ->
+    cond do
+      x == "index.md" ->
         :false
-      _ ->
+      x == "README.md" ->
+        :false
+      true ->
         is_file_supported(x)
     end
   end

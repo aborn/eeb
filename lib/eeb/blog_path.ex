@@ -7,7 +7,8 @@ defmodule Eeb.BlogPath do
   得到博客文章的目录，默认为项目根目录下的posts
   """
   def post_path() do
-    Path.join(__DIR__, "../../posts/") |> Path.expand()
+    default = Path.join(__DIR__, "../../posts/") |> Path.expand()
+    "/Users/aborn/github/technotebook"
   end
 
   def html_path() do
