@@ -14,7 +14,7 @@ mix run --no-halt        # 运行/部署
 ```
 如果想做为daemon 
 ```
-nohup mix --no-halt >>nohup.out 2>&1
+nohup mix run --no-halt >>nohup.out 2>&1
 ```
 命令执行完成后，在本地的4000端口监听http请求：
 http://localhost:4000/index.html  
