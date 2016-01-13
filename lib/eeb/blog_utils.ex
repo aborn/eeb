@@ -25,7 +25,8 @@ defmodule Eeb.BlogUtils do
   end
 
   def get_blog_image_name_list() do
-    listRoot = get_image_list(Path.join(BlogPath.post_path, "images"))
+    listRoot = get_image_list(Path.join(BlogPath.post_path, "images")) |>
+      Enum.map(fn(x) -> Path.join("images", x) end)
     listImages = get_image_list(BlogPath.post_path)
     listRoot ++ listImages
   end
