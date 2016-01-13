@@ -10,7 +10,7 @@ git clone https://github.com/aborn/eeb.git
 cd eeb
 mix deps.get             # 安装依赖
 mix eeb.blog             # 将posts/下的markdown文件转化成html文档
-mix run --no-halt        # 运行
+mix run --no-halt        # 运行/部署
 ```
 如果想做为daemon 
 ```
