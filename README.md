@@ -12,17 +12,11 @@ mix deps.get             # 安装依赖
 mix eeb.blog             # 将posts/下的markdown文件转化成html文档
 mix run --no-halt        # 运行/部署
 ```
-如果想做为daemon 
-```
-nohup mix run --no-halt >>nohup.out 2>&1
-```
 命令执行完成后，在本地的4000端口监听http请求：
 http://localhost:4000/index.html  
 如[http://eeb.aborn.me:4000/index.html](http://eeb.aborn.me:4000/index.html)
 
 ## 通过hex安装源安装[暂时不支持]
-
-1. 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
 1. Add eeb to your list of dependencies in `mix.exs`:
