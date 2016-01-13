@@ -16,6 +16,13 @@ mix run --no-halt        # 运行/部署
 http://localhost:4000/index.html  
 如[http://eeb.aborn.me:4000/index.html](http://eeb.aborn.me:4000/index.html)
 
+利用screen作为后台daemon
+```
+screen mix run --no-halt     #C-a d
+# screen -ls
+# screen -r id
+```
+
 ## 通过hex安装源安装[暂时不支持]
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
