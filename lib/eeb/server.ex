@@ -39,7 +39,7 @@ defmodule Server do
       request_path == "/" ->
         "index.html"
       request_path =~ ~r".html$" ->
-        String.split(request_path, "/") |> List.last()
+        String.split(request_path, "/") |> List.last() |> URI.decode
       true ->
         request_path
     end
