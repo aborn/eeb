@@ -38,6 +38,9 @@ def application do
     [applications: [:eeb]]
 end
 ```
+## 注意
+1. 默认的.md格式的博客目录为posts/  
+2. 生成的对应的.html静态文件目录为html/
 
 ## 使用
 ```mix
