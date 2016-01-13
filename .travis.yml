@@ -6,9 +6,7 @@ sudo: false
 before_script:
   - mix deps.get --only test
 script:
-  - mix deps.get
-  - mix compile
-  - mix test
+  - "MIX_ENV=test mix do deps.get, compile, coveralls.travis"
 after_script:
   - cd $TRAVIS_BUILD_DIR
   - mix deps.get --only docs
