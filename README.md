@@ -13,6 +13,10 @@ mix deps.get             # 安装依赖
 mix eeb.blog             # 将posts/下的markdown文件转化成html文档
 mix run --no-halt        # 运行/部署
 ```
+交互式命令运行eeb
+```
+iex -S mix
+```
 命令执行完成后，在本地的4000端口监听http请求：
 http://localhost:4000/index.html  
 如[http://eeb.aborn.me:4000/index.html](http://eeb.aborn.me:4000/index.html)
@@ -51,4 +55,4 @@ mix eeb.index    ## generate/regenerate this index.html file for blog
 ```
 
 ## 项目更新于
-2016-01-13
+2016-01-14
