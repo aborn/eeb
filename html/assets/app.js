@@ -97,3 +97,8 @@ function timer() {
 timer();
 
 $('.popup').popup();
+
+
+$('p').find('img').each(function(index, value) {
+    $(value).css("max-width", "700px");
+})
