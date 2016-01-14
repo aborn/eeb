@@ -29,6 +29,8 @@ defmodule Server do
         "text/html"
       request_path =~ ~r".css" ->
         "text/css"
+      request_path =~ ~r".png" ->
+        "image/png"
       true ->
         "text/plain"
     end
