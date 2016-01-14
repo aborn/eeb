@@ -4,6 +4,7 @@ defmodule Server do
   """
   
   alias Eeb.BlogPath
+  use Timex
   import Plug.Conn
 
   def init(options) do
@@ -13,7 +14,7 @@ defmodule Server do
   end
 
   def call(conn, _opts) do
-    Hex.Shell.info(conn.method <> " "<> conn.request_path)
+    log(conn)
     file = get_file_name(conn.request_path)
     Hex.Shell.info("file:" <> file)
     conn
@@ -21,6 +22,15 @@ defmodule Server do
     |> send_resp(200, get_html_file_content(file))
   end
 
+  defp log(conn) do
+    {:ok, timeNowStr} = Date.local |> DateFormat.format("{ISO}")
+    if conn.request_path =~ ~r".html$|/$" do
+      Hex.Shell.info("**** " <> timeNowStr <> " " <> conn.method <> " "<> conn.request_path)
+    else
+      Hex.Shell.info(" " <> conn.method <> " "<> conn.request_path)
+    end
+  end
+  
   def get_content_type(request_path) do
     cond do
       request_path == "/" ->
