@@ -10,6 +10,7 @@ eeb是elixir语言版本的博客平台，它由两部分组成：博客生成�
 git clone https://github.com/aborn/eeb.git
 cd eeb
 mix deps.get             # 安装依赖
+mix eeb.config blog_path "/Users/aborn/github/technotebook"  # 配置markdown文件目录，默认为项目根目录下的posts目录
 mix eeb.blog             # 将posts/下的markdown文件转化成html文档
 mix run --no-halt        # 运行/部署
 ```
@@ -44,16 +45,21 @@ def application do
 end
 ```
 ## 注意
-1. 默认的.md格式的博客目录为posts/  
+1. 默认的markdown格式的文章目录为posts/  
+改变这个目录，只需要执行 mix eeb.config blog\_path path/to/your/markdown/file/dir，例如：  
+```
+mix eeb.config blog_path "/Users/aborn/github/technotebook"
+```
 2. 生成的对应的.html静态文件目录为html/  
 3. 图片从原来的.md文件对应目录或者其目录下的images目录拷贝到html/images目录
 
-## 使用
+## 相关命令
 ```mix
 mix eeb          ## print eeb help info
 mix eeb.blog     ## generate blogs from posts/ dir to html/
 mix eeb.index    ## generate/regenerate this index.html file for blog
+mix eeb.config   ## Reads or update eeb config
 ```
 
 ## 项目更新于
-2016-01-14
+2016-01-15
