@@ -16,7 +16,7 @@ defmodule Server do
   def call(conn, _opts) do
     log(conn)
     file = get_file_name(conn.request_path)
-    Hex.Shell.info("file:" <> file)
+    # Hex.Shell.info("file:" <> file)
     conn
     |> put_resp_content_type(get_content_type(conn.request_path))
     |> send_resp(200, get_html_file_content(file))
@@ -59,7 +59,7 @@ defmodule Server do
 
   def get_html_file_content(file) do
     file = Path.join(BlogPath.html_path, file)
-    Hex.Shell.info(file)
+    # Hex.Shell.info(file)
     case File.read(file) do
       {:ok, content} ->
         content
