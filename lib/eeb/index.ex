@@ -26,8 +26,9 @@ defmodule Eeb.Index do
     end) |> Enum.join("<br/>")
     
     indexFileName = get_index_file_name()
-    html_header = Templates.index_head(ConfigUtils.build_config()) 
-    html_footer = Templates.index_footer()
+    config = ConfigUtils.build_config()
+    html_header = Templates.index_head(config) 
+    html_footer = Templates.index_footer(config)
     indexHtmlContent = html_header <> indexContent <> html_footer
     File.write(indexFileName, indexHtmlContent)
   end

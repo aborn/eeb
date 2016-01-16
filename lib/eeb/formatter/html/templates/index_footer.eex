@@ -5,11 +5,19 @@
                     <div class="ui  attached tab" data-tab="third">
                         <p>https://github.com/aborn/eeb</p>
                     </div>
-
+                    <footer class="footer">
+                        <p>
+                            <span class="line">
+                                Powered by
+                                <a href="https://github.com/aborn/eeb" title="eeb" rel="help" target="_blank">eeb (v<%= config.version %> )</a> .
+                            </span>
+                        </p>
+                    </footer>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <script src="http://oss.maxcdn.com/jquery/2.1.4/jquery.min.js"></script>

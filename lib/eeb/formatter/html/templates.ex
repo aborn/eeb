@@ -10,7 +10,7 @@ defmodule Eeb.Formatter.HTML.Templates do
     head_template: [:config, :blog],
     index_blog_item: [:blog],
     index_head: [:config],
-    index_footer: []
+    index_footer: [:config]
   ]
 
   Enum.each templates, fn({ name, args }) ->
