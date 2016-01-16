@@ -2,6 +2,9 @@ defmodule Eeb.ConfigUtils do
 
   @eeb_version Mix.Project.config[:version]
   @eeb_project Mix.Project.config[:app]
+  @blog_name_key :blog_name
+  @blog_slogan_key :blog_slogan
+  @blog_github_key :blog_github
   
   def version, do: @eeb_version
 
@@ -10,7 +13,10 @@ defmodule Eeb.ConfigUtils do
   def build_config() do
     %Eeb.Config{
       version: version(),
-      project: project()
+      project: project(),
+      blog_name: read_key_value(@blog_name_key, "eeb"),
+      blog_slogan: read_key_value(@blog_slogan_key, "elixir extendable blog, aha!"),
+      blog_github: read_key_value(@blog_github_key, "https://github.com/aborn/eeb")
     }
   end
 
@@ -20,6 +26,18 @@ defmodule Eeb.ConfigUtils do
     |> write()
   end
 
+  @doc """
+  获得配置的key对应的value，如果key不存在，
+  刚采用默认值(defaultValue)
+  """
+  def read_key_value(key, defaultValue) do
+    read() |>
+    Keyword.get(key, defaultValue)
+  end
+  
+  @doc """
+  获得所有key - value的配置
+  """
   def read() do
     case File.read(config_path()) do
       {:ok, binary} ->

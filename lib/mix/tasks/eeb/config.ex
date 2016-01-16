@@ -7,7 +7,9 @@ defmodule Mix.Tasks.Eeb.Config do
   Reads or updates eeb configuration file.
       mix eeb.config KEY [VALUE]
   ## Config keys
-     * `blog_path` - blog file path 
+     * `blog_path` - blog file path
+     * `blog_name` - blog name config
+     * `blog_slogan` - blog slogan config
   ##
   """
 

@@ -4,9 +4,10 @@ defmodule Eeb.Index do
   alias Eeb.Formatter.HTML.Templates
   alias Eeb.BlogPath
   alias Eeb.BlogUtils
+  alias Eeb.ConfigUtils
   
   @moduledoc """
-  处理博客的首页
+  获得博客的首页的Path
   """
   def get_index_file_name do
     Path.join(BlogPath.html_path, @filename)
@@ -25,7 +26,7 @@ defmodule Eeb.Index do
     end) |> Enum.join("<br/>")
     
     indexFileName = get_index_file_name()
-    html_header = Templates.index_head() 
+    html_header = Templates.index_head(ConfigUtils.build_config()) 
     html_footer = Templates.index_footer()
     indexHtmlContent = html_header <> indexContent <> html_footer
     File.write(indexFileName, indexHtmlContent)

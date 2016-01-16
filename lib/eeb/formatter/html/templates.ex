@@ -9,7 +9,7 @@ defmodule Eeb.Formatter.HTML.Templates do
     footer_template: [:config],
     head_template: [:config, :blog],
     index_blog_item: [:blog],
-    index_head: [],
+    index_head: [:config],
     index_footer: []
   ]
 
