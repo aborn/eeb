@@ -16,5 +16,7 @@ defmodule Eeb.HitTest do
     Client.hits("a.html")
     Client.hits("a.html")
     assert Client.get_hits("a.html") == 3
+    Client.hits("b.html")
+    assert Client.get_total_hits() == 4
   end
 end

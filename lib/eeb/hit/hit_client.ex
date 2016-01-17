@@ -3,9 +3,6 @@ defmodule Eeb.Hit.Client do
   @moduledoc """
   client
   """
-
-  alias Eeb.Monitor
-  
   def start_link do
     make_sure_hit_server_started()
     {:ok, Process.whereis(@servername)}
@@ -43,14 +40,20 @@ defmodule Eeb.Hit.Client do
     end
   end
 
-  def hits(blog_key) do
-    GenServer.cast(@servername, {:hits, blog_key})
-    Monitor.hits()
+  @doc """
+  获得博客站点总的访问次数
+  """
+  def get_total_hits do
+    case GenServer.call(@servername, {:get_hits, :totalhits}) do
+      {:ok, total_hits} ->
+        total_hits
+      _ ->
+        0
+    end
   end
 
-  def update_index() do
-    Eeb.Index.generate_index_page()
+  def hits(blog_key) do
+    GenServer.cast(@servername, {:hits, blog_key})
   end
-  
 end
 

@@ -11,14 +11,14 @@ defmodule Eeb.ConfigUtils do
   def project, do: @eeb_project
 
   def build_config() do
-    Eeb.Monitor.make_sure_monitor_boot_up()
+    Eeb.Hit.Client.make_sure_hit_server_started()
     %Eeb.Config{
       version: version(),
       project: project(),
       blog_name: read_key_value(@blog_name_key, "eeb"),
       blog_slogan: read_key_value(@blog_slogan_key, "elixir extendable blog, aha!"),
       blog_github: read_key_value(@blog_github_key, "https://github.com/aborn/eeb"),
-      visits: Eeb.Monitor.get_total_hits()
+      visits: Eeb.Hit.Client.get_total_hits()
     }
   end
 

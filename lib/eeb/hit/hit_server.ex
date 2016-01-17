@@ -2,7 +2,8 @@ defmodule Eeb.Hit.Server do
   @moduledoc """
   用来记录点击次数的server
   """
-
+  @totalhits :totalhits
+  
   use GenServer
 
   @doc """
@@ -28,6 +29,15 @@ defmodule Eeb.Hit.Server do
   博文被访问了一次
   """
   def handle_cast({:hits, blog_key}, hits) do
+    Eeb.Monitor.make_sure_monitor_boot_up()
+    Eeb.Monitor.hits_event()
+    
+    if Map.has_key?(hits, @totalhits) do
+      hits = Map.update!(hits, @totalhits, &(&1 +1))
+    else
+      hits = Map.put(hits, @totalhits, 1)        
+    end
+    
     if Map.has_key?(hits, blog_key) do
       hits = Map.update!(hits, blog_key, &(&1 +1))
       {:noreply, hits}
@@ -35,5 +45,5 @@ defmodule Eeb.Hit.Server do
       {:noreply, Map.put(hits, blog_key, 1)}
     end
   end
-  
+
 end
