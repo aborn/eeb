@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="eeb v<%= config.version %>">
     <title><%= blog.title %> – <%= config.project %> v<%= config.version %></title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/highlight.js/<%= config.highlight %>/styles/github.min.css">
     <link rel="stylesheet" type="text/css" href="assets/base.css">
@@ -16,7 +17,7 @@
             <div class="ui stackable two column grid container">
                 <div class="column">
                     <a href="index.html">
-                        <img class="ui avatar image" src="http://upload.jianshu.io/users/upload_avatars/297930/02d576b98e6a.png?imageMogr/thumbnail/90x90/quality/100">
+                        <img class="ui avatar image" src="<%= config.blog_avatar %>">
                     </a>
                 </div>
 

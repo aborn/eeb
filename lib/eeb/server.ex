@@ -20,7 +20,7 @@ defmodule Server do
     log(conn)
     file = get_file_name(conn.request_path)
     update_hits(file)
-    # Hex.Shell.info("file:" <> file)
+    Hex.Shell.info("file:" <> file <> " request_path:" <> conn.request_path)
     conn
     |> put_resp_content_type(get_content_type(conn.request_path))
     |> send_resp(200, get_html_file_content(file))
@@ -54,6 +54,8 @@ defmodule Server do
         "text/css"
       request_path =~ ~r".png" ->
         "image/png"
+      request_path =~ ~r".ico" ->
+        "image/x-icon"
       true ->
         "text/plain"
     end
