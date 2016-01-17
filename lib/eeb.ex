@@ -3,6 +3,7 @@ defmodule Eeb do
   def elixir_version, do: unquote(System.version)
   
   @moduledoc """
+  启动模块
   """
   use Application
 
@@ -10,7 +11,8 @@ defmodule Eeb do
     import Supervisor.Spec, warn: false
 
     children = [
-      worker(__MODULE__, [], function: :run)
+      worker(__MODULE__, [], function: :run),
+      worker(Eeb.Hit.Client, [])
     ]
 
     opts = [strategy: :one_for_one, name: Eeb.Supervisor]
@@ -18,7 +20,7 @@ defmodule Eeb do
   end
   
   def run do
-    Eeb.HitClient.make_sure_hit_server_started()
     { :ok, _ } = Plug.Adapters.Cowboy.http(Server, [])
   end
+
 end

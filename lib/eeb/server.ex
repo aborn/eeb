@@ -4,7 +4,7 @@ defmodule Server do
   """
   
   alias Eeb.BlogPath
-  alias Eeb.HitClient
+  alias Eeb.Hit.Client
   use Timex
   import Plug.Conn
 
@@ -25,8 +25,13 @@ defmodule Server do
     |> send_resp(200, get_html_file_content(file))
   end
 
+  @doc """
+  对html结尾的uri更新下点击次数
+  """
   def update_hits(blog_key) do
-    HitClient.hits(blog_key)
+    if blog_key =~ ~r".html$" do
+      Client.hits(blog_key)
+    end
   end
   
   defp log(conn) do

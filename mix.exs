@@ -20,7 +20,8 @@ defmodule Eeb.Mixfile do
   def application do
     [env: [default: :value],
      applications: [:logger,:tzdata,:cowboy],
-     mod: {Eeb, []}]
+     mod: {Eeb, []}
+     ]
   end
 
   # Dependencies can be Hex packages:

@@ -1,4 +1,4 @@
-defmodule Eeb.HitServer do
+defmodule Eeb.Hit.Server do
   @moduledoc """
   用来记录点击次数的server
   """
@@ -17,8 +17,10 @@ defmodule Eeb.HitServer do
   def handle_call({:get_hits, blog_key}, _form, hits) do
     cond do
       Map.has_key?(hits, blog_key) ->
+        Hex.Shell.info("#{inspect hits} ")
         {:reply, Map.fetch(hits, blog_key), hits}
       true ->
+        Hex.Shell.info("#{inspect hits} ")
         {:reply, 0, hits}
     end
   end

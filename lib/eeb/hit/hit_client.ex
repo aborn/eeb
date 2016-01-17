@@ -1,22 +1,35 @@
-defmodule Eeb.HitClient do
+defmodule Eeb.Hit.Client do
   @servername :hitserver
   @moduledoc """
   client
   """
 
+  def start_link do
+    make_sure_hit_server_started()
+    {:ok, Process.whereis(:hitserver)}
+  end
+  
+  @doc """
+  确保server进程已经起来!
+  """
   def make_sure_hit_server_started() do
-    case init() do
-      {:error, {:already_started, _}} ->
-        :true
-      {:ok, _} ->
-        :true
+    case Process.whereis(@servername) do
+      nil ->
+        case init() do
+          {:error, {:already_started, _}} ->
+            :true
+          {:ok, _} ->
+            :true
+          _ ->
+            :true
+        end
       _ ->
         :true
     end
   end
   
   def init() do
-    GenServer.start_link(Eeb.HitServer, :ok, name: @servername)
+    GenServer.start_link(Eeb.Hit.Server, :ok, name: @servername)
   end
 
   def get_hits(blog_key) do
