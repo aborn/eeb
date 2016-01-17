@@ -15,12 +15,11 @@ defmodule Eeb.Hit.Server do
   get_hits 根据博客key，来获取博客的访问次数
   """
   def handle_call({:get_hits, blog_key}, _form, hits) do
+    # Hex.Shell.info("#{inspect hits} ")
     cond do
       Map.has_key?(hits, blog_key) ->
-        Hex.Shell.info("#{inspect hits} ")
         {:reply, Map.fetch(hits, blog_key), hits}
       true ->
-        Hex.Shell.info("#{inspect hits} ")
         {:reply, 0, hits}
     end
   end
