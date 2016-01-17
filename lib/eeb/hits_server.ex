@@ -17,24 +17,22 @@ defmodule Eeb.HitServer do
   def handle_call({:get_hits, blog_key}, _form, hits) do
     cond do
       Map.has_key?(hits, blog_key) ->
-        Hex.Shell.info("get exists!")
+        # Hex.Shell.info("get exists!")
         {:reply, Map.fetch(hits, blog_key), hits}
       true ->
-        Hex.Shell.info("get not exists!")
+        # Hex.Shell.info("get not exists!")
         {:reply, 0, hits}
     end
   end
 
   @doc """
-  博客被
+  博文被访问了一次
   """
   def handle_cast({:hits, blog_key}, hits) do
     if Map.has_key?(hits, blog_key) do
-      Hex.Shell.info("update")
-      Map.update!(hits, blog_key, &(&1 + 1))
+      hits = Map.update!(hits, blog_key, &(&1 +1))
       {:noreply, hits}
     else
-      Hex.Shell.info("create")
       {:noreply, Map.put(hits, blog_key, 1)}
     end
   end

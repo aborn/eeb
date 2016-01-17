@@ -9,7 +9,12 @@ defmodule Eeb.HitClient do
   end
 
   def get_hits(blog_key) do
-    GenServer.call(@servername, {:get_hits, blog_key})
+    case GenServer.call(@servername, {:get_hits, blog_key}) do
+      {:ok, hitNumber} ->
+        hitNumber
+      _->
+        0
+    end
   end
 
   def hits(blog_key) do
