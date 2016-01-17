@@ -6,6 +6,7 @@ defmodule Eeb.Monitor do
   主要用来监控是否要重新生成html文档
   """
 
+  alias Eeb.BlogPath
   use GenServer
 
   # 下面是client部分
@@ -25,6 +26,12 @@ defmodule Eeb.Monitor do
 
   def hits_event do
     GenServer.cast(@servername, {:hits_event})
+  end
+
+  def git_pull_post do
+    result = System.cmd(System.cwd() <> "/gitupdate.sh", [BlogPath.post_path],[])
+    Hex.Shell.info("result: #{inspect result}")
+    result
   end
   
   # 下面是server部分
