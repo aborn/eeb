@@ -37,4 +37,3 @@ defmodule Eeb.Hit.Server do
   end
   
 end
-

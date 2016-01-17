@@ -9,7 +9,7 @@
                         <p>
                             <span class="line">
                                 Powered by
-                                <a href="https://github.com/aborn/eeb" title="eeb" rel="help" target="_blank">eeb (v<%= config.version %> )</a> .
+                                <a href="https://github.com/aborn/eeb" title="eeb" rel="help" target="_blank">eeb (v<%= config.version %> )</a>, <%= config.visits %> visits.
                             </span>
                         </p>
                     </footer>

@@ -4,9 +4,11 @@ defmodule Eeb.Hit.Client do
   client
   """
 
+  alias Eeb.Monitor
+  
   def start_link do
     make_sure_hit_server_started()
-    {:ok, Process.whereis(:hitserver)}
+    {:ok, Process.whereis(@servername)}
   end
   
   @doc """
@@ -43,6 +45,7 @@ defmodule Eeb.Hit.Client do
 
   def hits(blog_key) do
     GenServer.cast(@servername, {:hits, blog_key})
+    Monitor.hits()
   end
 
   def update_index() do

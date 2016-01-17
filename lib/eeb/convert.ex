@@ -29,7 +29,8 @@ defmodule Eeb.Convert do
   def convert_each_item(file) do
     blog_path = BlogPath.post_path()
     html_path = BlogPath.html_path()
-    file_out_put = Path.join(html_path, BlogUtils.get_file_name_without_suffix(file) <> ".html")
+    blog_key = BlogUtils.get_file_name_without_suffix(file) <> ".html"
+    file_out_put = Path.join(html_path, blog_key)
     file = Path.join(blog_path, file)
 
     title = BlogUtils.get_blog_title(file);
@@ -39,7 +40,7 @@ defmodule Eeb.Convert do
       {:ok, content} ->
         word_number = BlogUtils.count_word(content)
         html_bodycontent = Earmark.to_html(content) |> Style.pretty_codeblocks
-        html_header = get_template_header(file, word_number, title)
+        html_header = get_template_header(file, word_number, title, blog_key)
         html_footer = get_template_footer()
         html_doc = html_header <> html_bodycontent <> html_footer
         File.write(file_out_put, html_doc)
@@ -50,8 +51,9 @@ defmodule Eeb.Convert do
     end
   end
 
-  def get_template_header(file, word_number \\ 0,title \\ "eeb") do
+  def get_template_header(file, word_number \\ 0,title \\ "eeb", blog_key) do
     config = ConfigUtils.build_config();
+    Eeb.Hit.Client.make_sure_hit_server_started()
     # page = % {
     #   :title => title
     # }
@@ -60,7 +62,8 @@ defmodule Eeb.Convert do
       title: title,
       time: BlogUtils.get_file_time_normal(file, :ctime),
       mtime: BlogUtils.get_file_time_normal(file, :atime),
-      word_count: word_number
+      word_count: word_number,
+      hits: Eeb.Hit.Client.get_hits(blog_key)
     }
     Templates.head_template(config, blog)
   end
