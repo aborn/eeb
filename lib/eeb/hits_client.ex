@@ -4,6 +4,17 @@ defmodule Eeb.HitClient do
   client
   """
 
+  def make_sure_hit_server_started() do
+    case init() do
+      {:error, {:already_started, _}} ->
+        :true
+      {:ok, _} ->
+        :true
+      _ ->
+        :true
+    end
+  end
+  
   def init() do
     GenServer.start_link(Eeb.HitServer, :ok, name: @servername)
   end
@@ -19,6 +30,10 @@ defmodule Eeb.HitClient do
 
   def hits(blog_key) do
     GenServer.cast(@servername, {:hits, blog_key})
+  end
+
+  def update_index() do
+    GenServer.cast(@servername, {:update_index})
   end
   
 end

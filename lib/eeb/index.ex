@@ -39,10 +39,12 @@ defmodule Eeb.Index do
       blog_url = BlogUtils.get_file_name_without_suffix(file) <> ".html"
       blog_title = BlogUtils.get_blog_title(blog_path)
       blog_time = BlogUtils.get_file_mtime_iso(blog_path)
+      Eeb.HitClient.make_sure_hit_server_started()
+      blog_hits = Eeb.HitClient.get_hits(blog_url)
       %Eeb.Blog {
         url: blog_url,
         title: blog_title,
-        hits: "0",
+        hits: blog_hits,
         comments: "0",
         like: "0",
         time: blog_time #"2016-01-10T10:16:06+08:00"

@@ -4,6 +4,7 @@ defmodule Server do
   """
   
   alias Eeb.BlogPath
+  alias Eeb.HitClient
   use Timex
   import Plug.Conn
 
@@ -17,12 +18,17 @@ defmodule Server do
   def call(conn, _opts) do
     log(conn)
     file = get_file_name(conn.request_path)
+    update_hits(file)
     # Hex.Shell.info("file:" <> file)
     conn
     |> put_resp_content_type(get_content_type(conn.request_path))
     |> send_resp(200, get_html_file_content(file))
   end
 
+  def update_hits(blog_key) do
+    HitClient.hits(blog_key)
+  end
+  
   defp log(conn) do
     {:ok, timeNowStr} = Date.local |> DateFormat.format("{ISO}")
     if conn.request_path =~ ~r".html$|/$" do

@@ -17,10 +17,8 @@ defmodule Eeb.HitServer do
   def handle_call({:get_hits, blog_key}, _form, hits) do
     cond do
       Map.has_key?(hits, blog_key) ->
-        # Hex.Shell.info("get exists!")
         {:reply, Map.fetch(hits, blog_key), hits}
       true ->
-        # Hex.Shell.info("get not exists!")
         {:reply, 0, hits}
     end
   end
@@ -35,6 +33,11 @@ defmodule Eeb.HitServer do
     else
       {:noreply, Map.put(hits, blog_key, 1)}
     end
+  end
+
+  def handle_cast({:update_index}, hits) do
+    Eeb.Index.generate_index_page()
+    {:noreply, hits}
   end
   
 end

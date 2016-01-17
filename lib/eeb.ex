@@ -18,7 +18,7 @@ defmodule Eeb do
   end
   
   def run do
-    Eeb.HitClient.init()
+    Eeb.HitClient.make_sure_hit_server_started()
     { :ok, _ } = Plug.Adapters.Cowboy.http(Server, [])
   end
 end
