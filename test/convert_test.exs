@@ -1,5 +1,4 @@
 defmodule Eeb.ConvertTest do
-  alias Eeb.Convert
   alias Eeb.BlogPath
   
   use ExUnit.Case, async: true
