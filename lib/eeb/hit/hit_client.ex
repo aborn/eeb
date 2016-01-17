@@ -46,7 +46,7 @@ defmodule Eeb.Hit.Client do
   end
 
   def update_index() do
-    GenServer.cast(@servername, {:update_index})
+    Eeb.Index.generate_index_page()
   end
   
 end

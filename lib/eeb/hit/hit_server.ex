@@ -35,11 +35,6 @@ defmodule Eeb.Hit.Server do
       {:noreply, Map.put(hits, blog_key, 1)}
     end
   end
-
-  def handle_cast({:update_index}, hits) do
-    Eeb.Index.generate_index_page()
-    {:noreply, hits}
-  end
   
 end
 
