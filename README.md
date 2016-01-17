@@ -62,4 +62,4 @@ mix eeb.config   ## Reads or update eeb config
 ```
 
 ## 项目更新于
-2016-01-15
+2016-01-17

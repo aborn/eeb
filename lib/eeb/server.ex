@@ -1,6 +1,7 @@
 defmodule Server do
   @moduledoc """
   简单的server
+  :observer.start()
   """
   
   alias Eeb.BlogPath
