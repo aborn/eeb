@@ -20,6 +20,7 @@ defmodule Server do
     log(conn)
     file = get_file_name(conn.request_path)
     update_hits(file)
+    # Hex.Shell.info(" query_string:" <> conn.query_string)
     # Hex.Shell.info("file:" <> file <> " request_path:" <> conn.request_path)
     conn
     |> put_resp_content_type(get_content_type(conn.request_path))
