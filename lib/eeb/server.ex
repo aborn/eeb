@@ -31,7 +31,10 @@ defmodule Server do
         |> send_resp(200, get_html_file_content(fileName))
       uri == "/github.json" ->
         query_string = conn.query_string
-        Hex.Shell.info(" json:query_string:" <> query_string)
+        qpp = conn.params()
+        Hex.Shell.info(" json:query_string:" <> query_string <> " qpp:#{inspect qpp}" )
+        value = fetch_query_params(conn, "token")
+        Hex.Shell.info(" #{inspect value}")
         conn
         |> put_resp_content_type("application/json")
         |> send_resp(200, "{info:\"Hello world!\"}")
