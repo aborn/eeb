@@ -13,7 +13,8 @@ defmodule Eeb do
     children = [
       worker(__MODULE__, [], function: :run),
       worker(Eeb.Hit.Client, []),
-      worker(Eeb.Monitor, [])
+      worker(Eeb.Monitor, []),
+      worker(Eeb.GithubWebhook, [])
     ]
 
     opts = [strategy: :one_for_one, name: Eeb.Supervisor]
