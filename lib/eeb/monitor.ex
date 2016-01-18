@@ -8,6 +8,7 @@ defmodule Eeb.Monitor do
 
   alias Eeb.BlogPath
   use GenServer
+  use Timex
 
   # 下面是client部分
   def start_link do
@@ -43,18 +44,19 @@ defmodule Eeb.Monitor do
   
   def handle_cast({:hits_event}, infos) do
     if Map.has_key?(infos, @statusflag) do
-      infos = Map.update!(infos, @statusflag, &(&1 +1))
-      {:ok, number} = Map.fetch(infos, @statusflag)
-      # 每访问5次执行一次转换操作
-      if (number == 5) do
+      #infos = Map.update!(infos, @statusflag, &(&1 +1))
+      {:ok, lastTimeSec} = Map.fetch(infos, @statusflag)
+      currentTimeSec = Time.now(:secs)
+      # 当前时间与上次操作的时间差大于1分钟(60s)时，执行更新
+      if (currentTimeSec - lastTimeSec > 60) do
         Hex.Shell.info("   %%% generate event hits!!")
         Eeb.Convert.convert_markdown_blogs_to_html()
         #Eeb.Index.generate_index_page()
-        infos = Map.update!(infos, @statusflag, &(&1 *0))
+        infos = Map.update!(infos, @statusflag, fn _x -> Time.now(:secs) end)
       end
       {:noreply, infos}
     else
-      {:noreply, Map.put(infos, @statusflag, 1)}
+      {:noreply, Map.put(infos, @statusflag, Time.now(:secs))}
     end
   end
 
