@@ -18,24 +18,34 @@ defmodule Server do
 
   def call(conn, _opts) do
     log(conn)
-    file = get_file_name(conn.request_path)
-    update_hits(file)
-    # Hex.Shell.info(" query_string:" <> conn.query_string)
-    # Hex.Shell.info("file:" <> file <> " request_path:" <> conn.request_path)
-    conn
-    |> put_resp_content_type(get_content_type(conn.request_path))
-    |> send_resp(200, get_html_file_content(file))
+    http_res(conn, conn.request_path)
   end
 
-  @doc """
-  对html结尾的uri更新下点击次数
-  """
-  def update_hits(blog_key) do
-    if blog_key =~ ~r".html$" do
-      Client.hits(blog_key)
+  def http_res(conn, uri) do
+    cond do
+      uri =~ ~r".html$|/$|.css$|.png$|.ico$|.js$" ->
+        fileName = get_file_name(uri)
+        update_hits(fileName)      # 更新点击数
+        conn
+        |> put_resp_content_type(get_content_type(conn.request_path))
+        |> send_resp(200, get_html_file_content(fileName))
+      uri == "/github.json" ->
+        query_string = conn.query_string
+        Hex.Shell.info(" json:query_string:" <> query_string)
+        conn
+        |> put_resp_content_type("application/json")
+        |> send_resp(200, "{info:\"Hello world!\"}")
+      true ->
+        query_string = conn.query_string
+        Hex.Shell.info(" query_string:" <> query_string)
+        conn
+        |> send_resp(200, "Hello world")
     end
   end
   
+  @doc """
+  打出log日志
+  """
   defp log(conn) do
     {:ok, timeNowStr} = Date.local |> DateFormat.format("{ISO}")
     if conn.request_path =~ ~r".html$|/$" do
@@ -61,17 +71,6 @@ defmodule Server do
         "text/plain"
     end
   end
-  
-  def get_file_name(request_path) do
-    cond do
-      request_path == "/" ->
-        "index.html"
-      request_path =~ ~r".html$" ->
-        String.split(request_path, "/") |> List.last() |> URI.decode
-      true ->
-        request_path
-    end
-  end
 
   def get_html_file_content(file) do
     file = Path.join(BlogPath.html_path, file)
@@ -83,4 +82,25 @@ defmodule Server do
         "404 not find!"
     end
   end
+
+  defp get_file_name(request_path) do
+    cond do
+      request_path == "/" ->
+        "index.html"
+      request_path =~ ~r".html$" ->
+        String.split(request_path, "/") |> List.last() |> URI.decode
+      true ->
+        request_path
+    end
+  end
+
+  @doc """
+  对html结尾的uri更新下点击次数
+  """
+  defp update_hits(blog_key) do
+    if blog_key =~ ~r".html$" do
+      Client.hits(blog_key)
+    end
+  end
+
 end
