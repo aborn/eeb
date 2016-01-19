@@ -7,6 +7,8 @@ defmodule Server do
   alias Eeb.BlogPath
   alias Eeb.Hit.Client
   alias Eeb.Log
+  alias Eeb.GithubWebhook
+  
   use Timex
   import Plug.Conn
 
@@ -34,6 +36,7 @@ defmodule Server do
         conn = fetch_query_params(conn)
         params = conn.params
         Hex.Shell.info("  params #{inspect params}")
+        GithubWebhook.update_blog_event(params["token"])
         conn
         |> put_resp_content_type("application/json")
         |> send_resp(200, "{info:\"Hello world!\"}")

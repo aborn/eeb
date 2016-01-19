@@ -11,6 +11,7 @@ defmodule Mix.Tasks.Eeb.Config do
      * `blog_name` - blog name config
      * `blog_slogan` - blog slogan config
      * `blog_avatar` - blog avatar image config
+     * `webhook_token` - use as token verify when github webhook request
   ##
   """
 
