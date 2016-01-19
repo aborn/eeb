@@ -18,7 +18,7 @@ mix run --no-halt        # 本地运行/部署
 ```
 iex -S mix
 ```
-命令执行完成后，在本地的4000端口(默认为cowboy的监控端口号)监听http请求：
+命令执行完成后，在本地的4000端口(默认为cowboy的监控端口号)监听http请求：  
 http://localhost:4000/index.html  
 
 利用screen作为后台daemon
