@@ -51,11 +51,11 @@ mix eeb.config blog_path "/Users/aborn/github/technotebook"
 
 ## 相关命令
 ```mix
-mix eeb          ## print eeb help info
-mix eeb.blog     ## generate blogs from posts/ dir to html/
-mix eeb.index    ## generate/regenerate this index.html file for blog
-mix eeb.config   ## Reads or update eeb config
+mix eeb          ## 显示帮组信息
+mix eeb.blog     ## 将markdown格式博客生成静态html文件
+mix eeb.index    ## 生成博客首页index.html文件
+mix eeb.config   ## 读取或者更新博客的key/value的配置
 ```
 
 ## 项目更新于
-2016-01-19
+2016-01-20
