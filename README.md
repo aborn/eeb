@@ -31,7 +31,6 @@ screen mix run --no-halt     #C-a d
 
 ## 通过hex安装源安装[暂时不支持]
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-
 1. Add eeb to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
@@ -44,6 +43,7 @@ def application do
     [applications: [:eeb]]
 end
 ```
+
 ## 注意
 1. 默认的markdown格式的文章目录为posts/  
 改变这个目录，只需要执行 mix eeb.config blog\_path path/to/your/markdown/file/dir，例如：  
@@ -62,4 +62,4 @@ mix eeb.config   ## Reads or update eeb config
 ```
 
 ## 项目更新于
-2016-01-17
+2016-01-19
