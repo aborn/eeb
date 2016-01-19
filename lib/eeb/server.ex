@@ -6,6 +6,7 @@ defmodule Server do
   
   alias Eeb.BlogPath
   alias Eeb.Hit.Client
+  alias Eeb.Log
   use Timex
   import Plug.Conn
 
@@ -17,7 +18,7 @@ defmodule Server do
   end
 
   def call(conn, _opts) do
-    log(conn)
+    Log.log_conn(conn)
     http_res(conn, conn.request_path)
   end
 
@@ -30,11 +31,9 @@ defmodule Server do
         |> put_resp_content_type(get_content_type(conn.request_path))
         |> send_resp(200, get_html_file_content(fileName))
       uri == "/github.json" ->
-        query_string = conn.query_string
-        qpp = conn.params()
-        Hex.Shell.info(" json:query_string:" <> query_string <> " qpp:#{inspect qpp}" )
-        value = fetch_query_params(conn, "token")
-        Hex.Shell.info(" #{inspect value}")
+        conn = fetch_query_params(conn)
+        params = conn.params
+        Hex.Shell.info("  params #{inspect params}")
         conn
         |> put_resp_content_type("application/json")
         |> send_resp(200, "{info:\"Hello world!\"}")
@@ -45,19 +44,7 @@ defmodule Server do
         |> send_resp(200, "Hello world")
     end
   end
-  
-  @doc """
-  打出log日志
-  """
-  defp log(conn) do
-    {:ok, timeNowStr} = Date.local |> DateFormat.format("{ISO}")
-    if conn.request_path =~ ~r".html$|/$" do
-      Hex.Shell.info("**** " <> timeNowStr <> " " <> conn.method <> " "<> conn.request_path)
-    else
-      Hex.Shell.info(" " <> conn.method <> " "<> conn.request_path)
-    end
-  end
-  
+
   def get_content_type(request_path) do
     cond do
       request_path == "/" ->
