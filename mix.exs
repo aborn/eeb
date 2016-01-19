@@ -3,7 +3,7 @@ defmodule Eeb.Mixfile do
 
   def project do
     [app: :eeb,
-     version: "0.1.0-dev",
+     version: "0.1-dev",
      aliases: aliases,
      elixir: "~> 1.1",
      source_url: "https://github.com/aborn/eeb",
