@@ -12,7 +12,7 @@ cd eeb
 mix deps.get             # 安装依赖
 mix eeb.config blog_path "/Users/aborn/github/technotebook"  # 配置markdown文件目录，默认为项目根目录下的posts目录
 mix eeb.blog             # 将posts/下的markdown文件转化成html文档
-mix run --no-halt        # 运行/部署
+mix run --no-halt        # 本地运行/部署
 ```
 交互式命令运行eeb
 ```
@@ -29,19 +29,16 @@ screen mix run --no-halt     #C-a d
 # screen -r id
 ```
 
-## 通过hex安装源安装[暂时不支持]
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
-1. Add eeb to your list of dependencies in `mix.exs`:
-```elixir
-def deps do
-    [{:eeb, "~> 0.0.1"}]
-end
+## Github Webhooks
+当你的博客文章放在自己github的某个项目里，这个功能就很有用。比如，你更新了博客或者添加了新博客
+这时想让eeb及时的做更新转换，在github的项目配置里找到Webhooks的配置，添加如下Payload URL：  
 ```
-2. Ensure eeb is started before your application:
-```elixir
-def application do
-    [applications: [:eeb]]
-end
+http://aborn.me/github.json?token=xxx
+```
+我的eeb博客部署在aborn.me这台服务器上，你把以上链接改成你自己对应的服务器链接：
+注意这里的token值xxx改成你自己通过mix eeb.config配置的值：  
+```
+mix eeb.config webhook_token xxx
 ```
 
 ## 注意
