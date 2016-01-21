@@ -52,14 +52,20 @@ defmodule Server do
     cond do
       request_path == "/" ->
         "text/html"
-      request_path =~ ~r".html$" ->
+      request_path =~ ~r".html$|.htm$|.jsp$" ->
         "text/html"
-      request_path =~ ~r".css" ->
+      request_path =~ ~r".css$" ->
         "text/css"
-      request_path =~ ~r".png" ->
+      request_path =~ ~r".png$" ->
         "image/png"
-      request_path =~ ~r".ico" ->
+      request_path =~ ~r".ico$" ->
         "image/x-icon"
+      request_path =~ ~r".gif$" ->
+        "image/gif"
+      request_path =~ ~r".jpe$|.jpeg$" ->
+        "image/jpeg"
+      request_path =~ ~r".jpg$" ->
+        "application/x-jpg"
       true ->
         "text/plain"
     end
