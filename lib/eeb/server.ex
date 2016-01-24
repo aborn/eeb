@@ -14,7 +14,7 @@ defmodule Server do
 
   def init(options) do
     # initialize options
-    Hex.Shell.info("eeb running in http://localhost:4000/")
+    #Hex.Shell.info("eeb running in http://localhost:#{port}/")
     # System.cmd("/usr/bin/open", ["-a", "/Applications/Google Chrome.app", "http://localhost:4000/"],[])
     options
   end
