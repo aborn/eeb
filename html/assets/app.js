@@ -98,7 +98,7 @@ timer();
 
 $('.popup').popup();
 
-
-$('p').find('img').each(function(index, value) {
+// 正文中的图片限制最大宽度
+$('body').find('img').each(function(index, value) {
     $(value).css("max-width", "700px");
 })
