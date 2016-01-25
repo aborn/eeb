@@ -57,5 +57,12 @@ mix eeb.index    ## 生成博客首页index.html文件
 mix eeb.config   ## 读取或者更新博客的key/value的配置
 ```
 
+## 端口号配置
+eeb采用cowboy默认端口号为：4000,通过设置环境变量EEB_PORT的值，  
+可改变端口号，如下是个例子：  
+```shell
+export EEB_PORT=4001
+```
+
 ## 项目更新于
-2016-01-22
+2016-01-25

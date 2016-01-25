@@ -20,16 +20,28 @@ defmodule Eeb do
     opts = [strategy: :one_for_one, name: Eeb.Supervisor]
     Supervisor.start_link(children, opts)
   end
+
   
   def run do
-    portValue = System.get_env("EEB_PORT") || 4000
-    if is_binary(portValue) do
-      {portValue, _} = Integer.parse(portValue)
-    end
+    env_port = System.get_env("EEB_PORT")
+    portValue = get_port(env_port)
     Hex.Shell.info("eeb running in http://localhost:#{portValue}/")
-    options = [port: portValue]
-    Hex.Shell.info("eeb running in http://localhost:#{inspect options}/")
-    { :ok, _ } = Plug.Adapters.Cowboy.http(Server, [], options)
+    { :ok, _ } = Plug.Adapters.Cowboy.http(Server, [], [port: portValue])
   end
 
+  def get_port(env_port) do
+    cond do
+      is_binary(env_port) ->
+        if :error == Integer.parse(env_port) do
+          Hex.Shell.warn("The system env EEB_PORT=#{env_port} illegal, use default port.")
+          portValue = 4000
+        else
+          {portValue, _} = Integer.parse(env_port)
+        end
+      true ->
+        portValue = 4000
+    end
+    portValue
+  end
+  
 end
