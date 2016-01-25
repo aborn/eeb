@@ -44,6 +44,7 @@ defmodule Eeb.Monitor do
       if (currentTimeSec - lastTimeSec > 60) do
         Hex.Shell.info("   %%% generate event hits!!")
         Eeb.Convert.convert_markdown_blogs_to_html()
+        Eeb.Image.yank_images_from_origin()
         #Eeb.Index.generate_index_page()
         infos = Map.update!(infos, @statusflag, fn _x -> Time.now(:secs) end)
       end
