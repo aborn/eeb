@@ -59,7 +59,7 @@ mix eeb.config   ## 读取或者更新博客的key/value的配置
 
 ## 端口号配置
 eeb采用cowboy默认端口号为：4000,通过设置环境变量EEB_PORT的值，  
-可改变端口号，如下是个例子：  
+可改变端口号，如下例中将端口号改为4001：  
 ```shell
 export EEB_PORT=4001
 ```
