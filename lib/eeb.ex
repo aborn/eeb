@@ -22,7 +22,14 @@ defmodule Eeb do
   end
   
   def run do
-    { :ok, _ } = Plug.Adapters.Cowboy.http(Server, [])
+    portValue = System.get_env("EEB_PORT") || 4000
+    if is_binary(portValue) do
+      {portValue, _} = Integer.parse(portValue)
+    end
+    Hex.Shell.info("eeb running in http://localhost:#{portValue}/")
+    options = [port: portValue]
+    Hex.Shell.info("eeb running in http://localhost:#{inspect options}/")
+    { :ok, _ } = Plug.Adapters.Cowboy.http(Server, [], options)
   end
 
 end
