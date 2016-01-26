@@ -61,6 +61,16 @@ mix eeb.deploy   ## 运行和部署eeb博客.
 mix eeb.index    ## 生成博客首页index.html文件.
 ```
 
+## 相关配置
+通过mix eeb.config 配置以下key/value
+```
+blog\_path       ## 配置markdown文件目录（默认为posts/目录）.
+blog\_name       ## 配置博客名 (默认为:eeb).
+blog\_slogan     ## 配置博客签名（默认为:elixir extendable blog, aha!）.
+blog_avatar      ## 配置博客头像.
+webhook_token    ## 配置webhook的token.
+```
+
 ## 端口号配置
 eeb采用cowboy默认端口号为：4000,通过设置环境变量EEB_PORT的值，  
 可改变端口号，如下例中将端口号改为4001：  
