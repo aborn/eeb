@@ -24,9 +24,9 @@ iex -S mix
 http://localhost:4000/index.html  
 
 ## 后台部署
-利用screen作为后台daemon
-```
-screen mix eeb.deploy     # C-a d
+利用screen作为后台daemon,这样退出terminal后会在后台运行  
+```shell
+screen mix eeb.deploy  # C-a d
 # screen -ls
 # screen -r id
 ```
@@ -54,10 +54,11 @@ mix eeb.config blog_path "/Users/aborn/github/technotebook"
 
 ## 相关命令
 ```mix
-mix eeb          ## 显示帮组信息
-mix eeb.blog     ## 将markdown格式博客生成静态html文件
-mix eeb.index    ## 生成博客首页index.html文件
-mix eeb.config   ## 读取或者更新博客的key/value的配置
+mix eeb          ## 显示帮助信息.
+mix eeb.blog     ## 将markdown格式博客生成静态html文件.
+mix eeb.config   ## 读取或者更新博客的key/value的配置.
+mix eeb.deploy   ## 运行和部署eeb博客.
+mix eeb.index    ## 生成博客首页index.html文件.
 ```
 
 ## 端口号配置

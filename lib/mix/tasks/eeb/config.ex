@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.Eeb.Config do
   use Mix.Task
 
-  @shortdoc "Reads or update eeb config"
+  @shortdoc "Reads or update eeb config."
 
   @moduledoc """
   Reads or updates eeb configuration file.
