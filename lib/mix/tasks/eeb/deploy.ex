@@ -3,7 +3,7 @@ defmodule Mix.Tasks.Eeb.Deploy do
   
   @shortdoc "deploy on localhost:4000"
   
-  def run(args) do
+  def run(_args) do
     Mix.shell.info "deploy blog.."
     {:ok, _} = Plug.Adapters.Cowboy.http(Server, [])
     Mix.shell.info "finished deploy!"

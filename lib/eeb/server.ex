@@ -73,7 +73,6 @@ defmodule Server do
 
   def get_html_file_content(file) do
     file = Path.join(BlogPath.html_path, file)
-    # Hex.Shell.info(file)
     case File.read(file) do
       {:ok, content} ->
         content
@@ -93,9 +92,6 @@ defmodule Server do
     end
   end
 
-  @doc """
-  对html结尾的uri更新下点击次数
-  """
   defp update_hits(blog_key) do
     if blog_key =~ ~r".html$" do
       Client.hits(blog_key)

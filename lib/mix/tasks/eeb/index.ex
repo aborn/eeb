@@ -5,7 +5,7 @@ defmodule Mix.Tasks.Eeb.Index do
 
   alias Eeb.Index
   
-  def run(args) do
+  def run(_args) do
     Mix.shell.info "start generate index.html.."
     Index.generate_index_page()
     Mix.shell.info "finished mix eeb.index task!"
