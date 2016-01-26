@@ -64,9 +64,9 @@ mix eeb.index    ## 生成博客首页index.html文件.
 ## 相关配置
 通过mix eeb.config 配置以下key/value
 ```
-blog\_path       ## 配置markdown文件目录（默认为posts/目录）.
-blog\_name       ## 配置博客名 (默认为:eeb).
-blog\_slogan     ## 配置博客签名（默认为:elixir extendable blog, aha!）.
+blog_path        ## 配置markdown文件目录（默认为posts/目录）.
+blog_name        ## 配置博客名 (默认为:eeb).
+blog_slogan      ## 配置博客签名（默认为:elixir extendable blog, aha!）.
 blog_avatar      ## 配置博客头像.
 webhook_token    ## 配置webhook的token.
 ```
