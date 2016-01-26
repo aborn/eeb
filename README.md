@@ -62,7 +62,7 @@ mix eeb.index    ## 生成博客首页index.html文件.
 ```
 
 ## 相关配置
-通过mix eeb.config 配置以下key/value
+通过mix eeb.config key [value] 配置以下key对应的值:  
 ```
 blog_path        ## 配置markdown文件目录（默认为posts/目录）.
 blog_name        ## 配置博客名 (默认为:eeb).
