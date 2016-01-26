@@ -1,11 +1,25 @@
 defmodule Mix.Tasks.Eeb.Deploy do
   use Mix.Task
   
-  @shortdoc "deploy on localhost:4000"
+  @shortdoc "Starts the eeb application."
+
+  @moduledoc """
+  Starts the eeb application.
+  ## Command line
+     * mix eeb.deploy
+  """
   
-  def run(_args) do
-    Mix.shell.info "deploy blog.."
-    {:ok, _} = Plug.Adapters.Cowboy.http(Server, [])
-    Mix.shell.info "finished deploy!"
+  def run(args) do
+    Mix.Task.run "app.start", args
+    no_halt()
   end
+
+  defp no_halt do
+    unless iex_running?, do: :timer.sleep(:infinity)
+  end
+
+  defp iex_running? do
+    Code.ensure_loaded?(IEx) && IEx.started?
+  end
+
 end

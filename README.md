@@ -10,10 +10,12 @@ eeb是elixir语言版本的博客平台，它由两部分组成：博客生成�
 git clone https://github.com/aborn/eeb.git
 cd eeb
 mix deps.get             # 安装依赖
-mix eeb.config blog_path "/Users/aborn/github/technotebook"  # 配置markdown文件目录，默认为项目根目录下的posts目录
+mix eeb.config blog_path "/Users/aborn/github/technotebook"  # 配置markdown文件目录，默认为posts/目录
 mix eeb.blog             # 将posts/下的markdown文件转化成html文档
-mix run --no-halt        # 本地运行/部署
+mix eeb.deploy           # 本地运行/部署 (或者采用： mix run --no-halt 命令)
 ```
+
+## 开发模式
 交互式命令运行eeb
 ```
 iex -S mix
@@ -21,9 +23,10 @@ iex -S mix
 命令执行完成后，在本地的4000端口(默认为cowboy的监控端口号)监听http请求：  
 http://localhost:4000/index.html  
 
+## 后台部署
 利用screen作为后台daemon
 ```
-screen mix run --no-halt     #C-a d
+screen mix eeb.deploy     # C-a d
 # screen -ls
 # screen -r id
 ```

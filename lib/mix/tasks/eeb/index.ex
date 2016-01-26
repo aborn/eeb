@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.Eeb.Index do
   use Mix.Task
   
-  @shortdoc "generate/regenerate this index.html file for blog"
+  @shortdoc "Generate/Regenerate blog index.html file."
 
   alias Eeb.Index
   

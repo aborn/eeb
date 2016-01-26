@@ -1,7 +1,7 @@
 defmodule Mix.Tasks.Eeb.Blog do
   use Mix.Task
   
-  @shortdoc "generate blogs from markdown files in posts/"
+  @shortdoc "Generate static blogs from markdown files in posts/"
 
   alias Eeb.Convert
   alias Eeb.Image
