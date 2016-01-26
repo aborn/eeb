@@ -146,14 +146,14 @@ defmodule Eeb.BlogUtils do
         mtime = Date.from(stat.mtime, :local)
         ctime = Date.from(stat.ctime, :local)
         atime = Date.from(stat.atime, :local)
-        case type do
-          :ctime ->
-            time = ctime
-          :atime ->
-            time = atime
-          _ ->
-            time = mtime
-        end
+        time = case type do
+                 :ctime ->
+                   ctime
+                 :atime ->
+                   atime
+                 _ ->
+                   mtime
+               end
         
         case time |> DateFormat.format("%Y-%m-%d %H:%M", :strftime) do
           {:ok, timeString} ->
