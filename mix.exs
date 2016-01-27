@@ -45,7 +45,7 @@ defmodule Eeb.Mixfile do
      {:cowboy, "~> 1.0" },
      {:plug, "~> 0.14" },
      {:excoveralls, "~> 0.4", only: :test},
-     {:tzdata, "== 0.1.8", override: true}]  ## https://github.com/bitwalker/timex/issues/86
+     {:tzdata, "~> 0.1.8"}]  ## https://github.com/bitwalker/timex/issues/86
   end
 
   defp aliases do
