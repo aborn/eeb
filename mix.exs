@@ -51,7 +51,7 @@ defmodule Eeb.Mixfile do
   defp aliases do
     [compile: ["deps.check", &unload_hex/1, "compile"],
      run: [&unload_hex/1, "run"],
-     install: ["archive.build -o eeb.ez", "archive.install eeb.ez --force"],
+     install: ["archive.build -o archives/eeb.ez", "archive.install archives/eeb.ez --force"],
      uninstall: ["archive.uninstall eeb.ez"]]
   end
 

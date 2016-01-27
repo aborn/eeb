@@ -8,10 +8,11 @@ defmodule Mix.Tasks.Eeb.New do
   @moduledoc """
   Create a new Eeb blog.
   ## Examples
-  mix eeb.new ~/hello_word
+  mix eeb.new ~/hello_world
   """
   
   @bare [
+    {:text, "mix.exs", "mix.exs"},
     {:text, "html/assets/app.js", "html/assets/app.js"},
     {:text, "html/assets/base.css", "html/assets/base.css"},
   ]
@@ -43,6 +44,12 @@ defmodule Mix.Tasks.Eeb.New do
   
   defp copy_static(path, binding) do
     copy_from(path, binding, @bare)
+    install? = Mix.shell.yes?("\nFetch and install dependencies?")
+
+    File.cd!(path, fn ->
+      mix? = install_mix(install?)
+      extra = if mix?, do: [], else: ["$ mix deps.get"]
+    end)
   end
 
   root = Path.join(__DIR__, "../../../../") |> Path.expand
@@ -70,6 +77,27 @@ defmodule Mix.Tasks.Eeb.New do
           create_file(target, contents)
       end
     end
+  end
+
+  defp install_mix(install?) do
+    maybe_cmd "mix deps.get", true, install? && Code.ensure_loaded?(Hex)
+  end
+
+  defp maybe_cmd(cmd, should_run?, can_run?) do
+    cond do
+      should_run? && can_run? ->
+        cmd(cmd)
+        true
+      should_run? ->
+        false
+      true ->
+        true
+    end
+  end
+
+  defp cmd(cmd) do
+    Mix.shell.info [:green, "* running ", :reset, cmd]
+    :os.cmd(String.to_char_list(cmd))
   end
 
 end
