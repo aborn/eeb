@@ -34,7 +34,7 @@ defmodule Eeb.Convert do
     file = Path.join(blog_path, file)
 
     title = BlogUtils.get_blog_title(file);
-    
+
     Hex.Shell.info("process file:" <> file <> "...")
     case File.read(file) do
       {:ok, content} ->

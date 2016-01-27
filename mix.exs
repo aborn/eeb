@@ -34,7 +34,7 @@ defmodule Eeb.Mixfile do
   defp package do
     [
       maintainers: ["Aborn Jiang"],
-      licenses: ["The MIT License (MIT)"],
+      licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/aborn/eeb"}]
   end
   
