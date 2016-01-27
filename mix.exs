@@ -1,11 +1,15 @@
 defmodule Eeb.Mixfile do
   use Mix.Project
 
+  @version "0.1.0"
+  
   def project do
     [app: :eeb,
-     version: "0.1.0-dev",
+     version: @version,
      aliases: aliases,
      elixir: "~> 1.1",
+     description: description,
+     package: package,
      source_url: "https://github.com/aborn/eeb",
      homepage_url: "https://github.com/aborn/eeb",
      build_embedded: Mix.env == :prod,
@@ -14,25 +18,26 @@ defmodule Eeb.Mixfile do
      test_coverage: [tool: ExCoveralls]]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
     [env: [default: :value],
      applications: [:logger,:tzdata,:cowboy],
      mod: {Eeb, []}
-     ]
+    ]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
+  defp description do
+  """
+  Elixir extendable blog.
+  """
+  end
+
+  defp package do
+    [
+      maintainers: ["Aborn Jiang"],
+      licenses: ["The MIT License (MIT)"],
+      links: %{"GitHub" => "https://github.com/aborn/eeb"}]
+  end
+  
   defp deps do
     [{:earmark, "~> 0.1.19", only: :dev},
      {:ex_doc, "~> 0.11.1", only: :dev},
