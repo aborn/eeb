@@ -19,7 +19,7 @@ defmodule Eeb.Mixfile do
   end
 
   def application do
-    [env: [default: :value],
+    [
      applications: [:logger,:tzdata,:cowboy],
      mod: {Eeb, []}
     ]
