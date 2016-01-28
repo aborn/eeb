@@ -10,11 +10,15 @@ defmodule Mix.Tasks.Eeb.New do
   ## Examples
   mix eeb.new ~/hello_world
   """
+
+  @new [
+    {:eex, "installer/mix.exs", "mix.exs"},
+  ]
   
   @bare [
-    {:text, "mix.exs", "mix.exs"},
     {:text, "html/assets/app.js", "html/assets/app.js"},
     {:text, "html/assets/base.css", "html/assets/base.css"},
+    {:text, "posts/eeb.md", "posts/eeb.md"}
   ]
 
   @switches [dev: :boolean, brunch: :boolean, ecto: :boolean,
@@ -38,7 +42,8 @@ defmodule Mix.Tasks.Eeb.New do
   end
 
   def run(app, path) do
-    binding = [application_name: app]
+    binding = [application_name: app, eeb_version: @version]
+    copy_from(path, binding, @new)
     copy_static(path, binding)
   end
   
@@ -54,7 +59,7 @@ defmodule Mix.Tasks.Eeb.New do
 
   root = Path.join(__DIR__, "../../../../") |> Path.expand
   
-  for {format, source, _} <- @bare do
+  for {format, source, _} <- @new ++ @bare do
     unless format == :keep do
       @external_resource Path.join(root, source)
       def render(unquote(source)), do: unquote(File.read!(Path.join(root, source)))
