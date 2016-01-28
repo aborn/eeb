@@ -17,9 +17,6 @@ defmodule Mix.Tasks.Eeb.New do
   ]
   
   @bare [
-    {:text, "html/assets/app.js", "html/assets/app.js"},
-    {:text, "html/assets/base.css", "html/assets/base.css"},
-    {:text, "posts/eeb.md", "posts/eeb.md"}
   ]
 
   @switches [dev: :boolean, brunch: :boolean, ecto: :boolean,
