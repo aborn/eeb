@@ -1,6 +1,7 @@
 defmodule Mix.Tasks.Eeb.New do
   use Mix.Task
-  
+
+  @eeb Path.expand("../..", __DIR__)
   @version Mix.Project.config[:version]  
   @shortdoc "Create a new Eeb blog v#{@version} application."
   import Mix.Generator
@@ -12,7 +13,7 @@ defmodule Mix.Tasks.Eeb.New do
   """
 
   @new [
-    {:eex, "installer/mix.exs", "mix.exs"},
+    {:eex, "template/mix.exs", "mix.exs"},
   ]
   
   @bare [
@@ -57,7 +58,7 @@ defmodule Mix.Tasks.Eeb.New do
     end)
   end
 
-  root = Path.join(__DIR__, "../../../../") |> Path.expand
+  root = Path.join(__DIR__, "../") |> Path.expand
   
   for {format, source, _} <- @new ++ @bare do
     unless format == :keep do
