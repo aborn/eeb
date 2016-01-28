@@ -1,8 +1,8 @@
-defmodule EebBlog.Mixfile do
+defmodule <%= application_module %>.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :eeb_blog,
+    [app: :<%= application_name %>,
      version: "0.0.1",
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,

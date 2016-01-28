@@ -9,7 +9,7 @@ defmodule Mix.Tasks.Eeb.New do
   @moduledoc """
   Create a new Eeb blog.
   ## Examples
-  mix eeb.new ~/hello_world
+  mix eeb.new ~/eeb_blog
   """
 
   @new [
@@ -38,12 +38,18 @@ defmodule Mix.Tasks.Eeb.New do
         Mix.Task.run "help", ["eeb.new"]
       [path|_] ->
         app = opts[:app] || Path.basename(Path.expand(path))
-        run(app, path)
+        mod = opts[:module] || Macro.camelize(app)
+        check_module_name_validity!(mod)
+        check_module_name_availability!(mod)
+
+        run(app, mod ,path)
     end
   end
 
-  def run(app, path) do
-    binding = [application_name: app, eeb_version: @version]
+  def run(app, mod, path) do
+    binding = [application_name: app,
+               application_module: mod,
+               eeb_version: @version]
     copy_from(path, binding, @new)
     copy_static(path, binding)
   end
@@ -69,6 +75,7 @@ defmodule Mix.Tasks.Eeb.New do
 
   defp copy_from(target_dir, binding, mapping) when is_list(mapping) do
     application_name = Keyword.fetch!(binding, :application_name)
+    Hex.Shell.info("application_name: #{application_name}")
     for {format, source, target_path} <- mapping do
       target = Path.join(target_dir,
                          String.replace(target_path, "application_name", application_name))
@@ -104,6 +111,19 @@ defmodule Mix.Tasks.Eeb.New do
   defp cmd(cmd) do
     Mix.shell.info [:green, "* running ", :reset, cmd]
     :os.cmd(String.to_char_list(cmd))
+  end
+
+  defp check_module_name_validity!(name) do
+    unless name =~ ~r/^[A-Z]\w*(\.[A-Z]\w*)*$/ do
+      Mix.raise "Module name must be a valid Elixir alias (for example: Foo.Bar), got: #{inspect name}"
+    end
+  end
+
+  defp check_module_name_availability!(name) do
+    name = Module.concat(Elixir, name)
+    if Code.ensure_loaded?(name) do
+      Mix.raise "Module name #{inspect name} is already taken, please choose another name"
+    end
   end
 
 end

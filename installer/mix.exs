@@ -15,8 +15,8 @@ defmodule EebNew.Mixfile do
   end
 
   defp aliases do
-    [install: ["archive.build -o archives/eeb.ez", "archive.install archives/eeb.ez --force"],
-     uninstall: ["archive.uninstall eeb.ez"]]
+    [install: ["archive.build -o archives/eeb_new.ez", "archive.install archives/eeb_new.ez --force"],
+     uninstall: ["archive.uninstall eeb_new.ez"]]
   end
 
 end
