@@ -28,8 +28,8 @@ defmodule Mix.Tasks.Eeb.New do
 
   def run(argv) do
     {opts, argv, _} = OptionParser.parse(argv, switches: @switches)
-    unless Version.match? System.version, "~> 1.1" do
-      Mix.raise "Eeb v#{@version} requires at least Elixir v1.1.\n " <>
+    unless Version.match? System.version, "~> 1.0" do
+      Mix.raise "Eeb v#{@version} requires at least Elixir v1.0.\n " <>
         "You have #{System.version}. Please update accordingly."
     end
 
@@ -75,7 +75,6 @@ defmodule Mix.Tasks.Eeb.New do
 
   defp copy_from(target_dir, binding, mapping) when is_list(mapping) do
     application_name = Keyword.fetch!(binding, :application_name)
-    Hex.Shell.info("application_name: #{application_name}")
     for {format, source, target_path} <- mapping do
       target = Path.join(target_dir,
                          String.replace(target_path, "application_name", application_name))

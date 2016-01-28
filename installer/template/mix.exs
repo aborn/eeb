@@ -27,6 +27,6 @@ defmodule <%= application_module %>.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:eeb, "~> <%= eeb_version %>", only: :dev}]
+    [{:eeb, "~> <%= eeb_version %>"}]
   end
 end

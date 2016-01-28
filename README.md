@@ -2,26 +2,55 @@
 Elixir Extendable Blog, http://eeb.aborn.me/  
 [![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)
 [![Coverage Status](https://coveralls.io/repos/aborn/eeb/badge.svg?branch=master&service=github)](https://coveralls.io/github/aborn/eeb?branch=master)   
-eeb是elixir语言版本的博客平台，它由两部分组成：博客生成器和webserver。
+eeb是elixir语言版本的博客平台，它由两部分组成：1. 静态博客生成器;2. webserver。
 
-## 源码安装
-执行以下命令
-```
-git clone https://github.com/aborn/eeb.git
-cd eeb
-mix deps.get             # 安装依赖
-mix eeb.config blog_path "/Users/aborn/github/technotebook"  # 配置markdown文件目录，默认为posts/目录
-mix eeb.blog             # 将posts/下的markdown文件转化成html文档
-mix eeb.deploy           # 本地运行/部署 (或者采用： mix run --no-halt 命令)
-```
+## 环境
+安装和运行eeb需要elixir(版本1.0以上)语言环境，安装elixir见官方的[安装说明](http://elixir-lang.org/install.html)。
 
-## 开发模式
-交互式命令运行eeb
+## 安装
+安装eeb有以下两种方式：
+
+### 通过hex依赖安装
+**1.** 通过mix创建一个项目  
+```mix
+mix new eeb_blog
+cd eeb_blog
 ```
-iex -S mix
+**2.** 修改项目的mix.exs文件，添加对eeb的依赖,同时加载eeb模块  
+```mix
+  def application do
+    [applications: [:logger,:eeb]]
+  end
+  defp deps do
+    [{:eeb, "~> 0.1.2"}]
+  end
 ```
-命令执行完成后，在本地的4000端口(默认为cowboy的监控端口号)监听http请求：  
-http://localhost:4000/index.html  
+**3.** 最后安装依赖到本地并部署eeb博客  
+```
+mix deps.get
+mix eeb.deploy
+```
+部署完成后会显示
+```
+eeb running in http://localhost:4000/
+``
+这时浏览器中打开http://localhost:4000/博客页面
+
+### 通过eeb_new方式安装
+**1.** 通过以下命令，安装eeb_new
+```
+mix archive.install https://github.com/aborn/eeb/raw/master/installer/archives/eeb_new.ez
+```
+**2.** 创建eeb博客
+```
+mix eeb.new eeb_blog
+cd eeb_blog
+```
+**3.** 最后安装依赖到本地并部署eeb博客  
+```
+mix deps.get
+mix eeb.deploy
+```
 
 ## 后台部署
 利用screen作为后台daemon,这样退出terminal后会在后台运行  
@@ -79,4 +108,4 @@ export EEB_PORT=4001
 ```
 
 ## 项目更新于
-2016-01-28
+2016-01-29
