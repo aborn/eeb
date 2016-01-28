@@ -4,7 +4,7 @@ Elixir Extendable Blog, http://eeb.aborn.me/
 [![Coverage Status](https://coveralls.io/repos/aborn/eeb/badge.svg?branch=master&service=github)](https://coveralls.io/github/aborn/eeb?branch=master)   
 eeb是elixir语言版本的博客平台，它由两部分组成：1. 静态博客生成器;2. webserver。
 
-## 环境
+## elixir环境
 安装和运行eeb需要elixir(版本1.0以上)语言环境，安装elixir见官方的[安装说明](http://elixir-lang.org/install.html)。
 
 ## 安装
@@ -12,12 +12,12 @@ eeb是elixir语言版本的博客平台，它由两部分组成：1. 静态博�
 
 ### 通过hex依赖安装
 **1.** 通过mix创建一个项目  
-```mix
+```elixir
 mix new eeb_blog
 cd eeb_blog
 ```
-**2.** 修改项目的mix.exs文件，添加对eeb的依赖,同时加载eeb模块  
-```mix
+**2.** 修改项目的mix.exs文件，添加对eeb的依赖，同时加载eeb模块  
+```elixir
   def application do
     [applications: [:logger,:eeb]]
   end
@@ -25,15 +25,15 @@ cd eeb_blog
     [{:eeb, "~> 0.1.2"}]
   end
 ```
-**3.** 最后安装依赖到本地并部署eeb博客  
+**3.** 最后安装依赖到本地，然后部署eeb博客  
 ```
 mix deps.get
 mix eeb.deploy
 ```
-部署完成后会显示
+部署完成后会显示  
 ```
 eeb running in http://localhost:4000/
-``
+```
 这时浏览器中打开http://localhost:4000/博客页面
 
 ### 通过eeb_new方式安装
