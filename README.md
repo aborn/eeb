@@ -11,7 +11,7 @@ eeb是elixir语言版本的博客平台，它由两部分组成：1. 静态博�
 安装eeb有以下两种方式：
 
 ### 通过hex依赖安装
-**1.** 通过mix创建一个项目  
+**1.** 采用mix命令创建一个空项目  
 ```elixir
 mix new eeb_blog
 cd eeb_blog
@@ -34,7 +34,7 @@ mix eeb.deploy
 ```
 eeb running in http://localhost:4000/
 ```
-这时浏览器中打开http://localhost:4000/博客页面
+这时，可通过浏览器访问[http://localhost:4000/](http://localhost:4000/)博客页面
 
 ### 通过eeb_new方式安装
 **1.** 通过以下命令，安装eeb_new
@@ -52,7 +52,7 @@ mix deps.get
 mix eeb.deploy
 ```
 
-## 后台部署
+## 后台运行
 通过screen命令，将eeb作为后台daemon，这样退出terminal后会在后台运行  
 ```shell
 screen mix eeb.deploy  # C-a d
