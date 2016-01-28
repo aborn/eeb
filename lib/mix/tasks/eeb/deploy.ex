@@ -1,5 +1,6 @@
 defmodule Mix.Tasks.Eeb.Deploy do
   use Mix.Task
+  alias Eeb.Convert
   
   @shortdoc "Starts the eeb application."
 
@@ -10,6 +11,7 @@ defmodule Mix.Tasks.Eeb.Deploy do
   """
   
   def run(args) do
+    Convert.convert_markdown_blogs_to_html()
     Mix.Task.run "app.start", args
     no_halt()
   end
