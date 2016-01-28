@@ -1,7 +1,7 @@
 defmodule Eeb.Mixfile do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.1.1"
   
   def project do
     [app: :eeb,
@@ -12,8 +12,6 @@ defmodule Eeb.Mixfile do
      package: package,
      source_url: "https://github.com/aborn/eeb",
      homepage_url: "https://github.com/aborn/eeb",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
      deps: deps,
      test_coverage: [tool: ExCoveralls]]
   end
@@ -39,13 +37,13 @@ defmodule Eeb.Mixfile do
   end
   
   defp deps do
-    [{:earmark, "~> 0.1.19"},
+    [{:earmark, "~> 0.1.19", only: :dev},
      {:ex_doc, "~> 0.11.1", only: :docs},
-     {:timex, "~> 1.0.0"},
-     {:cowboy, "~> 1.0" },
-     {:plug, "~> 0.14" },
+     {:timex, "~> 1.0.0", only: :dev},
+     {:cowboy, "~> 1.0", only: :dev},
+     {:plug, "~> 0.14", only: :dev},
      {:excoveralls, "~> 0.4", only: :test},
-     {:tzdata, "~> 0.1.8"}]  ## https://github.com/bitwalker/timex/issues/86
+     {:tzdata, "~> 0.1.8", only: :dev}]  ## https://github.com/bitwalker/timex/issues/86
   end
 
   defp aliases do
