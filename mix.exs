@@ -18,8 +18,7 @@ defmodule Eeb.Mixfile do
 
   def application do
     [
-     applications: [:logger,:tzdata,:cowboy],
-     mod: {Eeb, []}
+     applications: [:logger,:tzdata,:cowboy]
     ]
   end
 
