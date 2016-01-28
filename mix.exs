@@ -30,7 +30,7 @@ defmodule Eeb.Mixfile do
   end
 
   defp package do
-    [ files: ["lib", "html", "installer", "posts", "LICENSE", "README.md"],
+    [ files: ["lib", "html", "installer", "posts", "LICENSE", "README.md", "mix.exs"],
       maintainers: ["Aborn Jiang"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/aborn/eeb"}]
