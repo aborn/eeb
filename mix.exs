@@ -37,13 +37,13 @@ defmodule Eeb.Mixfile do
   end
   
   defp deps do
-    [{:earmark, "~> 0.1.19", only: :dev},
+    [{:earmark, "~> 0.1.19"},
      {:ex_doc, "~> 0.11.1", only: :docs},
-     {:timex, "~> 1.0.0", only: :dev},
-     {:cowboy, "~> 1.0", only: :dev},
-     {:plug, "~> 0.14", only: :dev},
+     {:timex, "~> 1.0.0"},
+     {:cowboy, "~> 1.0"},
+     {:plug, "~> 0.14"},
      {:excoveralls, "~> 0.4", only: :test},
-     {:tzdata, "~> 0.1.8", only: :dev}]  ## https://github.com/bitwalker/timex/issues/86
+     {:tzdata, "~> 0.1.8"}]  ## https://github.com/bitwalker/timex/issues/86
   end
 
   defp aliases do
