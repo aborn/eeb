@@ -46,14 +46,14 @@ mix archive.install https://github.com/aborn/eeb/raw/master/installer/archives/e
 mix eeb.new eeb_blog
 cd eeb_blog
 ```
-**3.** 最后安装依赖到本地并部署eeb博客  
+**3.** 最后安装依赖到本地，然后部署eeb博客  
 ```
 mix deps.get
 mix eeb.deploy
 ```
 
 ## 后台部署
-利用screen作为后台daemon,这样退出terminal后会在后台运行  
+通过screen命令，将eeb作为后台daemon，这样退出terminal后会在后台运行  
 ```shell
 screen mix eeb.deploy  # C-a d
 # screen -ls
