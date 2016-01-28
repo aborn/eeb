@@ -72,7 +72,7 @@ http://aborn.me/github.json?token=xxx
 mix eeb.config webhook_token xxx
 ```
 
-## 注意
+## 注意事项
 **1.** 默认的markdown格式的文章目录为posts/  
 改变这个目录，只需要执行 mix eeb.config blog\_path "path/to/your/markdown/file/dir"，例如：  
 ```
@@ -81,7 +81,7 @@ mix eeb.config blog_path "/Users/aborn/github/technotebook"
 **2.** 生成的对应的.html静态文件目录为html/  
 **3.** 图片从原来的.md文件对应目录或者其目录下的images目录拷贝到html/images目录
 
-## 相关命令
+## 相关Task命令
 ```mix
 mix eeb          ## 显示帮助信息.
 mix eeb.blog     ## 将markdown格式博客生成静态html文件.
