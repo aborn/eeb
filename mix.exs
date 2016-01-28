@@ -1,7 +1,7 @@
 defmodule Eeb.Mixfile do
   use Mix.Project
 
-  @version "0.1.1"
+  @version "0.1.2"
   
   def project do
     [app: :eeb,
@@ -30,7 +30,7 @@ defmodule Eeb.Mixfile do
   end
 
   defp package do
-    [
+    [ files: ["lib", "html", "installer", "posts", "LICENSE", "README.md"]
       maintainers: ["Aborn Jiang"],
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/aborn/eeb"}]
