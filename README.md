@@ -7,7 +7,7 @@ eeb是elixir语言版本的博客平台，它由两部分组成：1. 静态博�
 ## elixir环境
 安装和运行eeb需要elixir(版本1.0以上)语言环境，安装elixir见官方的[安装说明](http://elixir-lang.org/install.html)。
 
-## 安装
+## 安装eeb
 安装eeb有以下两种方式：
 
 ### 通过hex依赖安装
