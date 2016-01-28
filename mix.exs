@@ -38,7 +38,7 @@ defmodule Eeb.Mixfile do
   
   defp deps do
     [{:earmark, "~> 0.1.19"},
-     {:ex_doc, "~> 0.11.1", only: :docs},
+     {:ex_doc, "~> 0.11.1", only: :dev},
      {:timex, "~> 1.0.0"},
      {:cowboy, "~> 1.0"},
      {:plug, "~> 0.14"},
