@@ -7,7 +7,7 @@ defmodule EebNew.Mixfile do
     [app: :eeb_new,
      version: @eeb_hex_latest_version,
      aliases: aliases,
-     elixir: "~> 1.1"]
+     elixir: "~> 1.2"]
   end
 
   def application do
