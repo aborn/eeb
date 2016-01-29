@@ -1,11 +1,11 @@
 defmodule Eeb.Mixfile do
   use Mix.Project
 
-  @version "0.1.2"
+  @eeb_current_dev_version "0.1.3-dev"
   
   def project do
     [app: :eeb,
-     version: @version,
+     version: @eeb_current_dev_version,
      elixir: "~> 1.2",
      description: description,
      package: package,
