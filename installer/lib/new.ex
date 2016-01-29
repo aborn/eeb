@@ -25,8 +25,8 @@ defmodule Mix.Tasks.Eeb.New do
 
   def run(argv) do
     {opts, argv, _} = OptionParser.parse(argv, switches: @switches)
-    unless Version.match? System.version, "~> 1.0" do
-      Mix.raise "Eeb v#{@version} requires at least Elixir v1.0.\n " <>
+    unless Version.match? System.version, "~> 1.1" do
+      Mix.raise "Eeb v#{@version} requires at least Elixir v1.1.\n " <>
         "You have #{System.version}. Please update accordingly."
     end
 
