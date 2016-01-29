@@ -27,7 +27,7 @@ cd eeb_blog
     [{:eeb, "~> 0.1.2"}]
   end
 ```
-**3.** 最后安装依赖到本地，然后部署eeb博客  
+**3.** 然后安装依赖到本地，最后部署eeb博客  
 ```
 mix deps.get
 mix eeb.deploy
@@ -48,7 +48,7 @@ mix archive.install https://github.com/aborn/eeb/raw/master/installer/archives/e
 mix eeb.new eeb_blog
 cd eeb_blog
 ```
-**3.** 最后安装依赖到本地，然后部署eeb博客  
+**3.** 然后安装依赖到本地，最后部署eeb博客  
 ```
 mix deps.get
 mix eeb.deploy
