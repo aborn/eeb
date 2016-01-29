@@ -6,7 +6,7 @@ defmodule Eeb.Mixfile do
   def project do
     [app: :eeb,
      version: @version,
-     elixir: "~> 1.1",
+     elixir: "~> 1.2",
      description: description,
      package: package,
      source_url: "https://github.com/aborn/eeb",

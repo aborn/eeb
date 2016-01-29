@@ -7,7 +7,7 @@ Elixir Extendable Blog, http://eeb.aborn.me/
 eeb是elixir语言版本的博客平台，它由两部分组成：1. 静态博客生成器；2. webserver。
 
 ## elixir环境
-安装和运行eeb需要elixir(1.1以上版本)语言环境，安装elixir见官方的[安装说明](http://elixir-lang.org/install.html)。
+安装和运行eeb需要elixir(1.2以上版本)语言环境，安装elixir见官方的[安装说明](http://elixir-lang.org/install.html)。
 
 ## 安装eeb
 安装eeb有以下两种方式：
