@@ -6,7 +6,6 @@ defmodule Eeb.Mixfile do
   def project do
     [app: :eeb,
      version: @version,
-     aliases: aliases,
      elixir: "~> 1.1",
      description: description,
      package: package,
@@ -44,11 +43,6 @@ defmodule Eeb.Mixfile do
      {:plug, "~> 0.14"},
      {:excoveralls, "~> 0.4", only: :test},
      {:tzdata, "~> 0.1.8"}]  ## https://github.com/bitwalker/timex/issues/86
-  end
-
-  defp aliases do
-    [install: ["archive.build -o archives/eeb.ez", "archive.install archives/eeb.ez --force"],
-     uninstall: ["archive.uninstall eeb.ez"]]
   end
   
 end
