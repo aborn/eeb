@@ -24,7 +24,7 @@ cd eeb_blog
     [applications: [:logger,:eeb]]
   end
   defp deps do
-    [{:eeb, "~> 0.1.2"}]
+    [{:eeb, "~> 0.1.3"}]
   end
 ```
 **3.** install dependency, finally, deploy it  

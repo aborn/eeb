@@ -21,7 +21,7 @@ cd eeb_blog
     [applications: [:logger,:eeb]]
   end
   defp deps do
-    [{:eeb, "~> 0.1.2"}]
+    [{:eeb, "~> 0.1.3"}]
   end
 ```
 **3.** 然后安装依赖到本地，最后部署eeb博客  
