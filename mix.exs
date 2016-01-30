@@ -11,6 +11,7 @@ defmodule Eeb.Mixfile do
      package: package,
      source_url: "https://github.com/aborn/eeb",
      homepage_url: "https://github.com/aborn/eeb",
+     docs: docs,
      deps: deps,
      test_coverage: [tool: ExCoveralls]]
   end
@@ -37,7 +38,7 @@ defmodule Eeb.Mixfile do
   
   defp deps do
     [{:earmark, "~> 0.1.19"},
-     {:ex_doc, "~> 0.11.1", only: :dev},
+     {:ex_doc, "~> 0.11.4", only: :dev},
      {:timex, "~> 1.0.0"},
      {:cowboy, "~> 1.0"},
      {:plug, "~> 0.14"},
@@ -45,5 +46,13 @@ defmodule Eeb.Mixfile do
      {:tzdata, "~> 0.1.8"}, ## https://github.com/bitwalker/timex/issues/86
      {:inch_ex, "~> 0.5.1", only: :docs}]  
   end
-  
+
+   defp docs do
+    [main: "getting-started",
+     formatter_opts: [gfm: true],
+     extras: [
+       "posts/Getting Started.md",
+       "posts/Eeb使用说明.md"
+    ]]
+  end
 end

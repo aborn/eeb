@@ -1,21 +1,24 @@
-# eeb中文简介
-Elixir Extendable Blog, http://eeb.aborn.me/  
+# eeb
+Elixir Extendable Blog, http://eeb.popkit.org/  
 [![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)
 [![Hex.pm Version](http://img.shields.io/hexpm/v/eeb.svg?style=flat)](https://hex.pm/packages/eeb)
 [![Inline docs](http://inch-ci.org/github/aborn/eeb.svg)](http://inch-ci.org/github/aborn/eeb)
 [![Coverage Status](https://coveralls.io/repos/aborn/eeb/badge.svg?branch=master&service=github)](https://coveralls.io/github/aborn/eeb?branch=master)   
-eeb是elixir语言版本的博客平台，它由两部分组成：1. 静态博客生成器；2. webserver。
+Eeb is a blog platform, which write in elixir language.  
+And it includes two parst:  
+1. static blog generator;
+2. webserver.
 
-## 安装eeb
-注意：安装和运行eeb需要elixir(1.2以上版本)语言环境，安装elixir见官方的[安装说明](http://elixir-lang.org/install.html)。  
-eeb的安装有以下两种方式：
-### 通过hex依赖安装
-**1.** 采用mix命令创建一个空项目  
+## Installation
+Install and deploy eeb needs elixir env. (version 1.2+). Install elixir env, pls. ref [elixir installation](http://elixir-lang.org/install.html)。  
+We provide the following two methods to install eeb after elixir env ready.
+### using hex package source
+**1.** create a new empty project  
 ```elixir
 mix new eeb_blog
 cd eeb_blog
 ```
-**2.** 修改项目的mix.exs文件，添加对eeb的依赖，同时加载eeb模块  
+**2.** modify mix.exs, add eeb dependency, and using eeb module  
 ```elixir
   def application do
     [applications: [:logger,:eeb]]
@@ -24,35 +27,35 @@ cd eeb_blog
     [{:eeb, "~> 0.1.2"}]
   end
 ```
-**3.** 然后安装依赖到本地，最后部署eeb博客  
+**3.** install dependency, finally, deploy it  
 ```
 mix deps.get
 mix eeb.deploy
 ```
-部署完成后会显示  
+after deployment success, it shows following message  
 ```
 eeb running in http://localhost:4000/
 ```
-这时，可通过浏览器访问[http://localhost:4000/](http://localhost:4000/)博客页面
+So, you can visit eeb blog using web browser[http://localhost:4000/](http://localhost:4000/)
 
-### 通过eeb_new方式安装
-**1.** 通过以下命令，安装eeb_new
+### using eeb_new installation kit
+**1.** install eeb_new kit as following  
 ```
 mix archive.install https://github.com/aborn/eeb/raw/master/installer/archives/eeb_new.ez
 ```
-**2.** 创建eeb博客
+**2.** create a new eeb blog  
 ```
 mix eeb.new eeb_blog
 cd eeb_blog
 ```
-**3.** 然后安装依赖到本地，最后部署eeb博客  
+**3.** install dependency, finally, deploy it  
 ```
 mix deps.get
 mix eeb.deploy
 ```
 
-## 后台运行
-通过screen命令，将eeb作为后台daemon，这样退出terminal后会在后台运行  
+## daemon running
+In linux platform, you can use screen to daemon eeb  
 ```shell
 screen mix eeb.deploy  # C-a d
 # screen -ls
@@ -115,4 +118,4 @@ mix eeb.config blog_port 4002
 注意：如果以上两种方式都设置了值，那以第一种为准!
 
 ## 项目更新于
-2016-01-30
+2016-01-31
