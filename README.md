@@ -1,5 +1,5 @@
 # eeb
-Elixir Extendable Blog, http://eeb.popkit.org/. [English Version README](./posts/Getting Started.md)  
+Elixir Extendable Blog, http://eeb.popkit.org/. English native user, pls ref [English Version README](./posts/Getting Started.md).  
 [![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)
 [![Hex.pm Version](http://img.shields.io/hexpm/v/eeb.svg?style=flat)](https://hex.pm/packages/eeb)
 [![Inline docs](http://inch-ci.org/github/aborn/eeb.svg)](http://inch-ci.org/github/aborn/eeb)
