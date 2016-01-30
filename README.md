@@ -98,6 +98,7 @@ blog_name        ## 配置博客名 (默认为:eeb).
 blog_slogan      ## 配置博客签名（默认为:elixir extendable blog, aha!）.
 blog_avatar      ## 配置博客头像.
 webhook_token    ## 配置webhook的token.
+blog_port        ## 博客运行的http端口号
 ```
 
 ## 端口号配置

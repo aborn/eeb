@@ -63,59 +63,62 @@ screen mix eeb.deploy  # C-a d
 ```
 
 ## Github Webhooks
-当你的博客文章放在自己github的某个项目里，这个功能就很有用。比如，你更新了博客或者添加了新博客
-这时想让eeb及时地更新博客文章，在github的项目配置里找到Webhooks的配置，添加如下Payload URL：  
+When your blog in github another repo. This function is very usefully. For example,
+when you create or update an blog, you want eeb to update your blog immediately.
+What's should you do? Just config a webhooks on your blog repo, and add following
+payload URL：  
 ```
-http://aborn.me/github.json?token=xxx
+http://your-blog-domain.com/github.json?token=xxx
 ```
-我的eeb博客部署在aborn.me这台服务器上，你把以上链接改成你自己部署的服务器链接：
-注意这里的token值xxx改成你自己通过mix eeb.config配置的值：  
+Here, the value of token parameter xxx should configured as following:  
 ```
 mix eeb.config webhook_token xxx
 ```
 
-## 注意事项
-**1.** 默认的markdown格式的文章目录为posts/  
-改变这个目录，只需要执行 mix eeb.config blog\_path "path/to/your/markdown/file/dir"，例如：  
+## Hints
+**1.** default markdown format blog directory is posts/  
+You can configure by mix eeb.config blog\_path "path/to/your/markdown/file/dir", for example：  
 ```
 mix eeb.config blog_path "/Users/aborn/github/technotebook"
 ```
-**2.** 生成的对应的.html静态文件目录为html/  
-**3.** 图片从原来的.md文件对应目录或者其目录下的images目录拷贝到html/images目录  
-**4.** 博客文件名以"_"开头的，将被当作草稿博客，不做转换。
+**2.** the static *.html files directory is html/  
+**3.** the images in html/images  
+**4.** the blog with file name starting with "_" will be regarded as draft, and won't be converted.
 
-## 相关Task命令
+## The tasks command
 ```mix
-mix eeb          ## 显示帮助信息.
-mix eeb.blog     ## 将markdown格式博客生成静态html文件.
-mix eeb.config   ## 读取或者更新博客的key/value的配置.
-mix eeb.deploy   ## 运行和部署eeb博客.
-mix eeb.index    ## 生成博客首页index.html文件.
+mix eeb        # Show the help command info.
+mix eeb.blog   # Generate static blogs from markdown files (in posts/ directory).
+mix eeb.config # Reads or update eeb config.
+mix eeb.deploy # Starts the eeb application.
+mix eeb.index  # Generate/Regenerate blog index.html file.
 ```
 
-## 相关配置
-通过mix eeb.config key [value] 配置以下key对应的值:  
+## Configuration
+mix eeb.config key [value], the keys show as following:  
 ```
-blog_path        ## 配置markdown文件目录（默认为posts/目录）.
-blog_name        ## 配置博客名 (默认为:eeb).
-blog_slogan      ## 配置博客签名（默认为:elixir extendable blog, aha!）.
-blog_avatar      ## 配置博客头像.
-webhook_token    ## 配置webhook的token.
+blog_path - blog file path
+blog_name - blog name config
+blog_slogan - blog slogan config
+blog_avatar - blog avatar image config
+webhook_token - use as token verify when github webhook request
+blog_port - blog http listening port number
 ```
 
-## 端口号配置
-eeb采用cowboy默认端口号为：4000，想要改变默认端口号可以通过以下两种方式：
-### 通过设置环境变量BLOG_PORT的值改变默认端口号
-如下例中将端口号改为4001：  
+## Http listen port
+eeb use cowboy default http port 4000  
+Using one of folling method to change the http port:  
+### BLOG_PORT environment variable
+following is an example:  
 ```shell
  export BLOG_PORT=4001
 ```
-### 通过mix eeb.config命令配置默认端口号
-如下例子中将端口号改为4002:  
+### mix eeb.config
+following is an example:  
 ```
 mix eeb.config blog_port 4002
 ```
-注意：如果以上两种方式都设置了值，那以第一种为准!
+But, the first one will be work if you use both method.
 
-## 项目更新于
+## Update date
 2016-01-31

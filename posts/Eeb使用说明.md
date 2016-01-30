@@ -1,5 +1,5 @@
-# eeb中文简介
-Elixir Extendable Blog, http://eeb.popkit.org/  
+# eeb中文说明
+Elixir Extendable Blog, http://eeb.popkit.org/. English native user, pls ref [English Version README](./posts/Getting Started.md).  
 [![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)
 [![Hex.pm Version](http://img.shields.io/hexpm/v/eeb.svg?style=flat)](https://hex.pm/packages/eeb)
 [![Inline docs](http://inch-ci.org/github/aborn/eeb.svg)](http://inch-ci.org/github/aborn/eeb)
@@ -98,6 +98,7 @@ blog_name        ## 配置博客名 (默认为:eeb).
 blog_slogan      ## 配置博客签名（默认为:elixir extendable blog, aha!）.
 blog_avatar      ## 配置博客头像.
 webhook_token    ## 配置webhook的token.
+blog_port        ## 博客运行的http端口号
 ```
 
 ## 端口号配置
@@ -115,4 +116,4 @@ mix eeb.config blog_port 4002
 注意：如果以上两种方式都设置了值，那以第一种为准!
 
 ## 项目更新于
-2016-01-31
+2016-01-30
