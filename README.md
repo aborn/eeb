@@ -81,7 +81,8 @@ mix eeb.config webhook_token xxx
 mix eeb.config blog_path "/Users/aborn/github/technotebook"
 ```
 **2.** 生成的对应的.html静态文件目录为html/  
-**3.** 图片从原来的.md文件对应目录或者其目录下的images目录拷贝到html/images目录
+**3.** 图片从原来的.md文件对应目录或者其目录下的images目录拷贝到html/images目录  
+**4.** 博客文件名以_开头的，将被当作草稿博客，不做转换。
 
 ## 相关Task命令
 ```mix
@@ -110,4 +111,4 @@ export EEB_PORT=4001
 ```
 
 ## 项目更新于
-2016-01-29
+2016-01-30
