@@ -15,5 +15,14 @@ defmodule Eeb.BlogUtilsTest do
     assert :false == BlogUtils.is_image_file("abc.jpe")
     assert :false == BlogUtils.is_image_file("abc")
   end
-  
+
+  test "is_file_legal" do
+    assert :true == BlogUtils.is_file_legal("index2.md")
+    assert :false == BlogUtils.is_file_legal("index.md")
+    assert :false == BlogUtils.is_file_legal("README.md")
+    assert :false == BlogUtils.is_file_legal("_README.md")
+    assert :false == BlogUtils.is_file_legal("_我是测试.md")
+    assert :false == BlogUtils.is_file_legal("abc.doc")
+    assert :false == BlogUtils.is_file_legal("abc.org")
+  end
 end

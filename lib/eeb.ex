@@ -24,6 +24,7 @@ defmodule Eeb do
   def run do
     portValue = System.get_env("EEB_PORT") |> get_port
     Hex.Shell.info("eeb running in http://localhost:#{portValue}/")
+    Eeb.Convert.convert_markdown_blogs_to_html()
     { :ok, _ } = Plug.Adapters.Cowboy.http(Server, [], [port: portValue])
   end
 

@@ -56,9 +56,9 @@ defmodule Eeb.BlogUtils do
   """
   def is_file_legal(x) do
     cond do
-      x == "index.md" ->
+      x == "index.md" or x == "README.md"->
         :false
-      x == "README.md" ->
+      x =~ ~r"^_" ->
         :false
       true ->
         is_file_supported(x)
