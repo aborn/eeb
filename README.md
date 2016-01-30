@@ -82,7 +82,7 @@ mix eeb.config blog_path "/Users/aborn/github/technotebook"
 ```
 **2.** 生成的对应的.html静态文件目录为html/  
 **3.** 图片从原来的.md文件对应目录或者其目录下的images目录拷贝到html/images目录  
-**4.** 博客文件名以_开头的，将被当作草稿博客，不做转换。
+**4.** 博客文件名以"_"开头的，将被当作草稿博客，不做转换。
 
 ## 相关Task命令
 ```mix
@@ -104,11 +104,18 @@ webhook_token    ## 配置webhook的token.
 ```
 
 ## 端口号配置
-eeb采用cowboy默认端口号为：4000,通过设置环境变量EEB_PORT的值，  
-可改变端口号，如下例中将端口号改为4001：  
+eeb采用cowboy默认端口号为：4000，想要改变默认端口号可以通过以下两种方式：
+### 通过设置环境变量BLOG_PORT的值改变默认端口号
+如下例中将端口号改为4001：  
 ```shell
-export EEB_PORT=4001
+ export BLOG_PORT=4001
 ```
+### 通过mix eeb.config命令配置默认端口号
+如下例子中将端口号改为4002:  
+```
+mix eeb.config blog_port 4002
+```
+注意：如果以上两种方式都设置了值，那以第一种为准!
 
 ## 项目更新于
 2016-01-30

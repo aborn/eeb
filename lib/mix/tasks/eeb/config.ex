@@ -5,14 +5,14 @@ defmodule Mix.Tasks.Eeb.Config do
 
   @moduledoc """
   Reads or updates eeb configuration file.
-      mix eeb.config KEY [VALUE]
+  mix eeb.config KEY [VALUE]
   ## Config keys
-     * `blog_path` - blog file path
-     * `blog_name` - blog name config
-     * `blog_slogan` - blog slogan config
-     * `blog_avatar` - blog avatar image config
-     * `webhook_token` - use as token verify when github webhook request
-  ##
+  * `blog_path` - blog file path
+  * `blog_name` - blog name config
+  * `blog_slogan` - blog slogan config
+  * `blog_avatar` - blog avatar image config
+  * `webhook_token` - use as token verify when github webhook request
+  * `blog_port` - blog http listening port number
   """
 
   def run(args) do

@@ -5,6 +5,7 @@ defmodule Eeb.ConfigUtils do
   @blog_name_key :blog_name
   @blog_slogan_key :blog_slogan
   @blog_github_key :blog_github
+  @config_file_dir_mode :local  # :global
   
   def version, do: @eeb_version
 
@@ -33,15 +34,15 @@ defmodule Eeb.ConfigUtils do
   刚采用默认值(defaultValue)
   """
   def read_key_value(key, defaultValue) do
-    read() |>
-    Keyword.get(key, defaultValue)
+    read()
+    |> Keyword.get(key, defaultValue)
   end
   
   @doc """
-  获得所有key - value的配置
+  get all key : value from local disk file
   """
   def read() do
-    case File.read(config_path()) do
+    case config_path() |> File.read do
       {:ok, binary} ->
         case decode_term(binary) do
           {:ok, term} -> term
@@ -57,7 +58,6 @@ defmodule Eeb.ConfigUtils do
   """
   def write(config) do
     string = encode_term(config)
-
     path = config_path()
     File.mkdir_p!(Path.dirname(path))
     File.write!(path, string)
@@ -96,7 +96,14 @@ defmodule Eeb.ConfigUtils do
   end
   
   defp config_file_dir do
-    Path.expand(System.get_env("EEB_HOME") || "~/.eeb")
+    case @config_file_dir_mode do
+      :local ->
+        Path.join([__DIR__, "../.."]) |> Path.expand
+      :global ->
+        Path.expand(System.get_env("EEB_HOME") || "~/.eeb")
+      _ ->
+        Path.expand(System.get_env("EEB_HOME") || "~/.eeb")
+    end
   end
   
 end
