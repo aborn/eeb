@@ -17,6 +17,7 @@ defmodule Mix.Tasks.Eeb.New do
   ]
   
   @bare [
+    {:text, "static/.gitignore", ".gitignore"},
   ]
 
   @switches [dev: :boolean, brunch: :boolean, ecto: :boolean,
