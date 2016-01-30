@@ -48,7 +48,7 @@ defmodule Eeb.Mixfile do
   end
 
    defp docs do
-    [main: "getting-started",
+    [main: "extra-getting-started",
      formatter_opts: [gfm: true],
      extras: [
        "posts/Getting Started.md",
