@@ -1,7 +1,7 @@
 defmodule EebNew.Mixfile do
   use Mix.Project
 
-  @eeb_hex_latest_version "0.1.2"
+  @eeb_hex_latest_version "0.1.3"
 
   def project do
     [app: :eeb_new,
