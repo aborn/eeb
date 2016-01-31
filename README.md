@@ -4,7 +4,9 @@ Elixir Extendable Blog, http://eeb.popkit.org/. English native user, pls ref [En
 [![Hex.pm Version](http://img.shields.io/hexpm/v/eeb.svg?style=flat)](https://hex.pm/packages/eeb)
 [![Inline docs](http://inch-ci.org/github/aborn/eeb.svg)](http://inch-ci.org/github/aborn/eeb)
 [![Coverage Status](https://coveralls.io/repos/aborn/eeb/badge.svg?branch=master&service=github)](https://coveralls.io/github/aborn/eeb?branch=master)   
-eeb是elixir语言版本的博客平台，它由两部分组成：1. 静态博客生成器；2. webserver。
+eeb是elixir语言版本的博客平台，它由两部分组成：  
+1. 静态博客生成器；  
+2. webserver。
 
 ## 安装eeb
 注意：安装和运行eeb需要elixir(1.2以上版本)语言环境，安装elixir见官方的[安装说明](http://elixir-lang.org/install.html)。  
