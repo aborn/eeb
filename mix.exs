@@ -1,7 +1,7 @@
 defmodule Eeb.Mixfile do
   use Mix.Project
 
-  @eeb_current_dev_version "0.1.4-dev"
+  @eeb_current_dev_version "0.1.3"
   
   def project do
     [app: :eeb,
@@ -48,7 +48,7 @@ defmodule Eeb.Mixfile do
   end
 
    defp docs do
-    [main: "extra-getting-started",
+    [main: "getting-started",
      formatter_opts: [gfm: true],
      extras: [
        "posts/Getting Started.md",
