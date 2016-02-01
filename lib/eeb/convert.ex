@@ -12,7 +12,7 @@ defmodule Eeb.Convert do
   alias Eeb.BlogUtils
 
   @doc """
-  将markdown文件转换成html
+  convert markdown origin blog file to static html file
   Eeb.Convert.convert_markdown_blogs_to_html()
   """
   def convert_markdown_blogs_to_html() do
@@ -29,6 +29,7 @@ defmodule Eeb.Convert do
   def convert_each_item(file) do
     blog_path = BlogPath.post_path()
     html_path = BlogPath.html_path()
+    # here, blog_key represents uri
     blog_key = BlogUtils.get_file_name_without_suffix(file) <> ".html"
     file_out_put = Path.join(html_path, blog_key)
     file = Path.join(blog_path, file)
@@ -42,7 +43,7 @@ defmodule Eeb.Convert do
         html_bodycontent = Earmark.to_html(content) |> Style.pretty_codeblocks
         blog = get_blog_basic_info(file, word_number, title, blog_key); 
         html_header = get_template_header(blog)
-        html_footer = get_template_footer(blog)
+        html_footer = get_template_footer()
         html_doc = html_header <> html_bodycontent <> html_footer
         File.write(file_out_put, html_doc)
         Hex.Shell.info("success process file:" <> file)
@@ -74,9 +75,9 @@ defmodule Eeb.Convert do
     Templates.head_template(config, blog)
   end
 
-  def get_template_footer(blog) do
+  def get_template_footer() do
     config = ConfigUtils.build_config();
-    Templates.footer_template(config, blog)
+    Templates.footer_template(config)
   end
 
   def html_path_check(html_path) do

@@ -117,5 +117,11 @@ mix eeb.config blog_port 4002
 ```
 注意：如果以上两种方式都设置了值，那以第一种为准!
 
+## 多说评论
+eeb可以添加多说评论插件，只要配置多说的short_name，如下：
+```
+mix eeb.config duoshuo_short_name your_duoshuo_short_name
+```
+
 ## 项目更新于
 2016-02-01

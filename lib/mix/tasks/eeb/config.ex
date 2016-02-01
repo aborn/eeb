@@ -13,6 +13,7 @@ defmodule Mix.Tasks.Eeb.Config do
   * `blog_avatar` - blog avatar image config
   * `webhook_token` - use as token verify when github webhook request
   * `blog_port` - blog http listening port number
+  * `duoshuo_short_name` - duoshuo(http://duoshuo.com/) short name
   """
 
   def run(args) do

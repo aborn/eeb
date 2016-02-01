@@ -6,11 +6,12 @@ defmodule Eeb.Formatter.HTML.Templates do
   
   templates = [
     test: [:page],     # only for test
-    footer_template: [:config, :blog],
+    footer_template: [:config],
     head_template: [:config, :blog],
     index_blog_item: [:blog],
     index_head: [:config],
-    index_footer: [:config]
+    index_footer: [:config],
+    duoshuo_template: [:blog, :short_name]
   ]
 
   Enum.each templates, fn({ name, args }) ->
