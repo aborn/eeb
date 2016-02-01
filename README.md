@@ -124,4 +124,4 @@ mix eeb.config duoshuo_short_name your_duoshuo_short_name
 ```
 
 ## 项目更新于
-2016-02-01
+2016-02-02

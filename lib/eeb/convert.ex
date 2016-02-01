@@ -10,6 +10,7 @@ defmodule Eeb.Convert do
   alias Eeb.Index
   alias Eeb.BlogPath
   alias Eeb.BlogUtils
+  alias Eeb.DuoshuoPlug
 
   @doc """
   convert markdown origin blog file to static html file
@@ -44,7 +45,7 @@ defmodule Eeb.Convert do
         blog = get_blog_basic_info(file, word_number, title, blog_key); 
         html_header = get_template_header(blog)
         html_footer = get_template_footer()
-        html_doc = html_header <> html_bodycontent <> html_footer
+        html_doc = content_concat(html_header, html_bodycontent, html_footer, blog)
         File.write(file_out_put, html_doc)
         Hex.Shell.info("success process file:" <> file)
         Hex.Shell.info("  output file:" <> file_out_put)
@@ -53,6 +54,15 @@ defmodule Eeb.Convert do
     end
   end
 
+  def content_concat(header, content, footer, blog) do
+    if DuoshuoPlug.is_use_duoshuo? do
+      duoshuo = DuoshuoPlug.duoshuo_short_name() |> Templates.duoshuo_template(blog)
+      header <> content <> duoshuo <> footer
+    else
+      header <> content <> footer
+    end
+  end
+  
   def get_blog_basic_info(file, word_number \\ 0, title \\ "eeb", blog_key) do
     blog = %Eeb.Blog {
       url: blog_key,

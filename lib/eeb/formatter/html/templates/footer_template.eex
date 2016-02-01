@@ -1,14 +1,13 @@
     <footer class="footer">
       <p>
         <span class="line">
-          Powered by
+            Powered by
             <a href="https://github.com/aborn/eeb" title="eeb" rel="help" target="_blank">eeb</a> (v<%= config.version %>).
         </span>
       </p>
     </footer>
-
   </div>
-  
+
   <script src="http://oss.maxcdn.com/jquery/2.1.4/jquery.min.js"></script>
   <script src="http://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.js"></script>
   <script src="http://oss.maxcdn.com/highlight.js/<%= config.highlight %>/highlight.min.js"></script>
