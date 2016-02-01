@@ -6,7 +6,7 @@ defmodule Eeb.Formatter.HTML.Templates do
   
   templates = [
     test: [:page],     # only for test
-    footer_template: [:config],
+    footer_template: [:config, :blog],
     head_template: [:config, :blog],
     index_blog_item: [:blog],
     index_head: [:config],

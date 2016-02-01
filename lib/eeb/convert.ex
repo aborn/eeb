@@ -40,8 +40,9 @@ defmodule Eeb.Convert do
       {:ok, content} ->
         word_number = BlogUtils.count_word(content)
         html_bodycontent = Earmark.to_html(content) |> Style.pretty_codeblocks
-        html_header = get_template_header(file, word_number, title, blog_key)
-        html_footer = get_template_footer()
+        blog = get_blog_basic_info(file, word_number, title, blog_key); 
+        html_header = get_template_header(blog)
+        html_footer = get_template_footer(blog)
         html_doc = html_header <> html_bodycontent <> html_footer
         File.write(file_out_put, html_doc)
         Hex.Shell.info("success process file:" <> file)
@@ -51,26 +52,31 @@ defmodule Eeb.Convert do
     end
   end
 
-  def get_template_header(file, word_number \\ 0,title \\ "eeb", blog_key) do
-    config = ConfigUtils.build_config();
-    Eeb.Hit.Client.make_sure_hit_server_started()
-    # page = % {
-    #   :title => title
-    # }
-    #
+  def get_blog_basic_info(file, word_number \\ 0, title \\ "eeb", blog_key) do
     blog = %Eeb.Blog {
+      url: blog_key,
       title: title,
       time: BlogUtils.get_file_time_normal(file, :ctime),
       mtime: BlogUtils.get_file_time_normal(file, :atime),
       word_count: word_number,
       hits: Eeb.Hit.Client.get_hits(blog_key)
     }
+    blog
+  end
+  
+  def get_template_header(blog) do
+    config = ConfigUtils.build_config();
+    Eeb.Hit.Client.make_sure_hit_server_started()
+    # page = % {
+    #   :title => title
+    # }
+    #
     Templates.head_template(config, blog)
   end
 
-  def get_template_footer() do
+  def get_template_footer(blog) do
     config = ConfigUtils.build_config();
-    Templates.footer_template(config)
+    Templates.footer_template(config, blog)
   end
 
   def html_path_check(html_path) do

@@ -32,6 +32,7 @@ defmodule Eeb.Hit.Client do
   end
 
   def get_hits(blog_key) do
+    make_sure_hit_server_started()   ## TODO why?
     case GenServer.call(@servername, {:get_hits, blog_key}) do
       {:ok, hitNumber} ->
         hitNumber
