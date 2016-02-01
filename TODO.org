@@ -1,0 +1,9 @@
+* TODO [0/7] eeb未实现的功能
+** TODO 点赞功能
+** TODO 阅读量，评论，like数的持久化
+** TODO 接入评论，如多说 
+** TODO 首页列表分页功能
+** TODO 对elixir语言的代码高亮
+** TODO 首页列表，每个文章，如有图片，显示缩略图
+** TODO 发布的工具化，版本和readme等
+** TODO 是否对https进行支持
