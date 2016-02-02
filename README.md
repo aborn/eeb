@@ -126,7 +126,7 @@ mix eeb.config duoshuo_short_name your_duoshuo_short_name
 
 ## 对elixir语言的代码高亮支持
 如下示例：  
-```
+```elixir
 defmodule Eeb.DuoshuoPlug do
 
   @duoshuo_short_name_key :duoshuo_short_name
