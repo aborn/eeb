@@ -1,0 +1,14 @@
+<link rel="stylesheet" type="text/css" href="http://www.dpfile.com/sc/static/highlight_9.1.0_all_languages/styles/github.css">
+<link rel="stylesheet" type="text/css" href="http://www.dpfile.com/sc/static/highlight/9.1.0/styles/github.css">
+<link rel="stylesheet" type="text/css" href="http://www.dpfile.com/sc/static/highlight/<%= config.highlight %>/styles/github.css">
+<link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/highlight.js/<%= config.highlight %>/styles/github.min.css">
+    <link rel="stylesheet" type="text/css" href="http://oss.maxcdn.com/highlight.js/<%= config.highlight %>/styles/solarized-dark.min.css">
+
+  <- dp file source all language->
+  <script src="http://www.dpfile.com/sc/static/highlight_9.1.0_all_languages/highlight.pack.js"></script>
+  <- dp file: common language + elixir etc. ->
+  
+<script src="http://www.dpfile.com/sc/static/highlight/9.1.0/highlight.pack.js"></script>
+<script src="http://www.dpfile.com/sc/static/highlight/<%= config.highlight %>/highlight.pack.js"></script>
+  
+<script src="http://oss.maxcdn.com/highlight.js/<%= config.highlight %>/highlight.min.js"></script>

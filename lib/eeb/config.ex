@@ -3,6 +3,7 @@ defmodule Eeb.Config do
     version: nil,
     project: nil,
     highlight: "9.1.0",   # highlight.js的版本号
+    highlight_style: "solarized-dark",  #hightlight style, example "github" "solarized-dark"
     blog_slogan: "elixir extendable blog, aha!",
     blog_name: "eeb",
     blog_github: "https://github.com/aborn/eeb",
