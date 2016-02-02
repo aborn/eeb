@@ -30,7 +30,7 @@
                             </a>
                             <span class="popup" data-content="最后编辑于 <%= blog.mtime %>" data-variation="inverted"><%= blog.time %>*</span>
                         </div>
-                        <span>写了<%= blog.word_count %>字</span>，<span>被<%= blog.hits %>人访问</span>，<span id="span-like">获得了<%= blog.like %>个喜欢</span>，<span id="span-comments">总共<%= blog.comments %>条评论</span>
+                        <span>写了<%= blog.word_count %>字</span>，<span>被<%= blog.hits %>人访问</span>，<span id="span-like">获得<%= blog.like %>个喜欢</span>，<span id="span-comments"><%= blog.comments %>条评论.</span>
                     </div>
                 </div>
             </div>
