@@ -30,19 +30,19 @@ defmodule Eeb.Convert do
   def convert_each_item(file) do
     blog_path = BlogPath.post_path()
     html_path = BlogPath.html_path()
-    # here, blog_key represents uri
+    # here, use uri blog_key
     blog_key = BlogUtils.get_file_name_without_suffix(file) <> ".html"
     file_out_put = Path.join(html_path, blog_key)
+    
     file = Path.join(blog_path, file)
-
     title = BlogUtils.get_blog_title(file);
-
     Hex.Shell.info("process file:" <> file <> "...")
     case File.read(file) do
       {:ok, content} ->
         word_number = BlogUtils.count_word(content)
         html_bodycontent = Earmark.to_html(content) |> Style.pretty_codeblocks
-        blog = get_blog_basic_info(file, word_number, title, blog_key); 
+        blog = get_blog_basic_info(file, word_number, title, blog_key);
+        
         html_header = get_template_header(blog)
         html_footer = get_template_footer()
         html_doc = content_concat(html_header, html_bodycontent, html_footer, blog)
