@@ -70,7 +70,8 @@ defmodule Eeb.Convert do
       time: BlogUtils.get_file_time_normal(file, :ctime),
       mtime: BlogUtils.get_file_time_normal(file, :atime),
       word_count: word_number,
-      hits: Eeb.Hit.Client.get_hits(blog_key)
+      hits: Eeb.Hit.Client.get_hits(blog_key),
+      blog_key: blog_key
     }
     blog
   end
