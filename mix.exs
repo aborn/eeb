@@ -1,7 +1,7 @@
 defmodule Eeb.Mixfile do
   use Mix.Project
 
-  @eeb_current_dev_version "0.1.4-dev"
+  @eeb_current_dev_version "0.2.0-dev"
   
   def project do
     [app: :eeb,
