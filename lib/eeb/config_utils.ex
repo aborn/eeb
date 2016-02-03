@@ -63,8 +63,22 @@ defmodule Eeb.ConfigUtils do
     File.write!(path, string)
   end
 
+  def remove_all_config() do
+    config_file = config_path()
+    if File.exists?(config_file) do
+      case File.rm(config_file) do
+        :ok ->
+          Hex.Shell.info("config_file #{config_file} already removed!")
+        {:error, reson} ->
+          Hex.Shell.warn("#{inspect reson}")
+        _ ->
+          Hex.Shell.warn("unknown error!")
+      end
+    end
+  end
+
   def config_path do
-    Path.join(config_file_dir(), "eeb.config")
+    config_file_dir() |> Path.join("eeb.config")
   end
 
   defp encode_term(list) do
