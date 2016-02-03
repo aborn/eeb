@@ -63,6 +63,7 @@ mix eeb.deploy
 screen mix eeb.deploy  # C-a d
 # screen -ls
 # screen -r id
+# screen -X -S id quit #(Attached)
 ```
 
 ## Github Webhooks
