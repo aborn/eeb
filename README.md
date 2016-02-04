@@ -4,7 +4,7 @@ Elixir Extendable Blog, http://eeb.popkit.org/. English native user, pls ref [En
 [![Hex.pm Version](http://img.shields.io/hexpm/v/eeb.svg?style=flat)](https://hex.pm/packages/eeb)
 [![Inline docs](http://inch-ci.org/github/aborn/eeb.svg)](http://inch-ci.org/github/aborn/eeb)
 [![Coverage Status](https://coveralls.io/repos/aborn/eeb/badge.svg?branch=master&service=github)](https://coveralls.io/github/aborn/eeb?branch=master)
-[![Hex.pm Downloads](https://img.shields.io/hexpm/dt/eeb.svg?style=flat-square)](https://hex.pm/packages/eeb)
+[![Hex.pm Downloads](https://img.shields.io/hexpm/dt/eeb.svg?style=flat)](https://hex.pm/packages/eeb)
 eeb是elixir语言版本的博客平台，它由两部分组成：  
 1. 静态博客生成器；  
 2. webserver。
