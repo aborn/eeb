@@ -3,7 +3,7 @@ defmodule Eeb do
   def elixir_version, do: unquote(System.version)
   
   @moduledoc """
-  启动模块,主入口
+  the application module, main.
   """
   use Application
 
@@ -35,12 +35,21 @@ defmodule Eeb do
 
     case result do
       {:ok, pid} ->
-        Hex.Shell.info("#{inspect pid} eeb running in #{protocal}://localhost:#{portValue}/")
+        running_uri = "#{protocal}://localhost:#{portValue}/"
+        Hex.Shell.info("#{inspect pid} eeb running in #{running_uri}")
+        case :os.type() do
+          {:unix, :darwin} ->
+            :ok
+            # System.cmd("/usr/bin/open", ["-a", "/Applications/Google Chrome.app", "#{running_uri}"], [])
+          _ ->
+            :ok # do nothing
+        end
       {:error, :eaddrinuse} ->
         Hex.Shell.error("failed. [port #{portValue}] address already in use")
       {:error, term} ->
         Hex.Shell.error("failed. #{inspect term}")
     end
+
     {:ok, self()}
   end
 
