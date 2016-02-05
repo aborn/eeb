@@ -1,7 +1,7 @@
 defmodule Eeb.Convert do
 
   @moduledoc """
-  将markdown文件转化成html文档
+  convert markdown file to html file
   """
 
   alias Eeb.Formatter.HTML.Templates

@@ -24,11 +24,27 @@ defmodule Eeb do
   def run do
     Eeb.Convert.convert_markdown_blogs_to_html()
     portValue = (System.get_env("BLOG_PORT") || Eeb.ConfigUtils.read_key_value(:blog_port, "4000")) |> get_port
-    Hex.Shell.info("eeb running in http://localhost:#{portValue}/")
-    { :ok, _ } = Plug.Adapters.Cowboy.http(Server, [], [port: portValue])
+    protocal = get_protocal()
+
+    result = case protocal do
+               :https ->
+                 Plug.Adapters.Cowboy.https(Server, [], [port: portValue])
+               _ ->
+                 Plug.Adapters.Cowboy.http(Server, [], [port: portValue])
+             end
+
+    case result do
+      {:ok, pid} ->
+        Hex.Shell.info("#{inspect pid} eeb running in #{protocal}://localhost:#{portValue}/")
+      {:error, :eaddrinuse} ->
+        Hex.Shell.error("failed. [port #{portValue}] address already in use")
+      {:error, term} ->
+        Hex.Shell.error("failed. #{inspect term}")
+    end
+    {:ok, self()}
   end
 
-  def get_port(env_port) do
+  defp get_port(env_port) do
     case is_binary(env_port) do
       true ->
         if :error == Integer.parse(env_port) do
@@ -41,6 +57,10 @@ defmodule Eeb do
       false ->
         4000
     end
+  end
+
+  defp get_protocal do
+    :http
   end
   
 end
