@@ -6,8 +6,6 @@ defmodule Eeb.Hit.Server do
   
   use GenServer
 
-  @doc """
-  """
   def init(:ok) do
     {:ok, %{}}
   end
@@ -16,7 +14,6 @@ defmodule Eeb.Hit.Server do
   get_hits 根据博客key，来获取博客的访问次数
   """
   def handle_call({:get_hits, blog_key}, _form, hits) do
-    # Hex.Shell.info("#{inspect hits} ")
     cond do
       Map.has_key?(hits, blog_key) ->
         {:reply, Map.fetch(hits, blog_key), hits}

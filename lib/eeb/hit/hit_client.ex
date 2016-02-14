@@ -1,16 +1,13 @@
 defmodule Eeb.Hit.Client do
   @servername :hitserver
   @moduledoc """
-  client
+  page view client
   """
   def start_link do
     make_sure_hit_server_started()
     {:ok, Process.whereis(@servername)}
   end
-  
-  @doc """
-  确保server进程已经起来!
-  """
+
   def make_sure_hit_server_started() do
     case Process.whereis(@servername) do
       nil ->

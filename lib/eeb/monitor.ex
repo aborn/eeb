@@ -29,8 +29,6 @@ defmodule Eeb.Monitor do
   end
 
   # 下面是server部分
-  @doc """
-  """
   def init(:ok) do
     {:ok, %{}}
   end
