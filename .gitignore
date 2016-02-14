@@ -24,3 +24,4 @@ doc/
 docs/
 installer/_build/
 eeb.config
+html/assets/.tern-port

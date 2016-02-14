@@ -36,13 +36,26 @@ defmodule Server do
         GithubWebhook.update_blog_event(params["token"])
         conn
         |> put_resp_content_type("application/json")
-        |> send_resp(200, "{info:\"Hello world!\"}")
+        |> send_resp(200, "{info:\"finish github webhooks!\"}")
+      uri == "/api/duoshuo" ->
+        conn = parse(conn)
+        comments = conn.params["comments"]
+        like = conn.params["like"]
+        blog_key = conn.params["blog_key"]
+        Hex.Shell.info(" comments=#{comments}, like=#{like}, blog_key=#{blog_key}")
+        conn
+        |> send_resp(200, "post duoshuo success!")
       true ->
         query_string = conn.query_string
         Hex.Shell.info(" query_string:" <> query_string)
         conn
         |> send_resp(200, "Hello world")
     end
+  end
+
+  def parse(conn, opts \\ []) do
+    opts = Keyword.put_new(opts, :parsers, [Plug.Parsers.URLENCODED, Plug.Parsers.MULTIPART])
+    Plug.Parsers.call(conn, Plug.Parsers.init(opts))
   end
 
   def get_content_type(request_path) do

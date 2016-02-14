@@ -2,7 +2,7 @@ $(function(){
     var data_thread_key = $('.ds-thread').attr('data-thread-key');
     var short_name = $('.ds-thread').attr('short-name');
     console.log("short_name=" + short_name + "  data_thread_key=" + data_thread_key);
-    if (data_thread_key != undefined && data_thread_key != '') {
+    if (data_thread_key !== undefined && data_thread_key !== '') {
         var url = 'http://api.duoshuo.com/threads/counts.jsonp';
         var data = {
             short_name : short_name,
@@ -14,7 +14,7 @@ $(function(){
             data : data,
             success : function(data) {
                 // console.log(JSON.stringify(data));
-                if (data.code == 0) {
+                if (data.code === 0) {
                     var dataJson = data.response[data_thread_key];
                     var comments = dataJson.comments;
                     if (comments > 0) {
@@ -26,9 +26,16 @@ $(function(){
                         var like_info = "获得" + likes + "个喜欢";
                         $('#span-like').html(like_info);
                     }
+                    $.post("/api/duoshuo", {
+                        comments : comments,
+                        like : likes,
+                        blog_key : data_thread_key
+                    }, function(data){
+                        console.log(data);
+                    });
                     console.log('likes:' + likes + " comments:" + comments);
                 }
             },
-            dataType : 'JSONP'})
+            dataType : 'JSONP'});
     }
-})
+});
