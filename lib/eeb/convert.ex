@@ -30,7 +30,7 @@ defmodule Eeb.Convert do
   def convert_each_item(file) do
     blog_path = BlogPath.post_path()
     html_path = BlogPath.html_path()
-    # here, use uri blog_key
+    # here, uri as blog_key
     blog_key = BlogUtils.get_file_name_without_suffix(file) <> ".html"
     file_out_put = Path.join(html_path, blog_key)
     

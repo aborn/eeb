@@ -166,14 +166,11 @@ defmodule Eeb.BlogUtils do
     end
   end
   
-  # 博客的修改时间
+  # blog modify time
   defp blog_file_time(file) do
     get_file_mtime_posix(Path.join(BlogPath.post_path, file))
   end
 
-  @doc """
-  计算博客含有多少字
-  """
   def count_word(str) do
     count_chinese_charator(str) + count_english_word(str)
   end
