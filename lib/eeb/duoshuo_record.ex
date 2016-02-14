@@ -21,6 +21,25 @@ defmodule Eeb.DuoshuoRecord do
     end
   end
 
+  def get_record(blog_key, field) do
+    record = get_record(blog_key)
+    case record do
+      nil ->
+        0
+      _ ->
+        case field do
+          :comments ->
+            record.comments
+          :like ->
+            record.like
+          :hits ->
+            record.hits
+          _ ->
+            0
+        end
+    end
+  end
+
   def get_record(blog_key) do
     case GenServer.call(@servername, {:get_record, blog_key}) do
       {:ok, record} ->
@@ -49,6 +68,7 @@ defmodule Eeb.DuoshuoRecord do
   end
 
   def handle_cast({:update_record, blog_key, record}, records) do
+    # Hex.Shell.info("record: #{inspect record}")
     if Map.has_key?(records, blog_key) do
       records = Map.update!(records, blog_key,
         fn _x ->
@@ -57,5 +77,6 @@ defmodule Eeb.DuoshuoRecord do
     else
       records = Map.put(records, blog_key, record)
     end
+    {:noreply, records}
   end
 end
