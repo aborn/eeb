@@ -8,6 +8,7 @@ defmodule Server do
   alias Eeb.Hit.Client
   alias Eeb.Log
   alias Eeb.GithubWebhook
+  alias Eeb.DuoshuoRecord
   
   use Timex
   import Plug.Conn
@@ -43,6 +44,9 @@ defmodule Server do
         like = conn.params["like"]
         blog_key = conn.params["blog_key"]
         Hex.Shell.info(" comments=#{comments}, like=#{like}, blog_key=#{blog_key}")
+        DuoshuoRecord.make_sure_duoshuo_record_boot_up()
+        record = %Eeb.Blog{blog_key: blog_key, like: like, comments: comments}
+        DuoshuoRecord.update_record(blog_key, record)
         conn
         |> send_resp(200, "post duoshuo success!")
       true ->

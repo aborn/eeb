@@ -13,7 +13,7 @@ defmodule Eeb.Hit.Server do
   @doc """
   get_hits 根据博客key，来获取博客的访问次数
   """
-  def handle_call({:get_hits, blog_key}, _form, hits) do
+  def handle_call({:get_hits, blog_key}, _from, hits) do
     cond do
       Map.has_key?(hits, blog_key) ->
         {:reply, Map.fetch(hits, blog_key), hits}

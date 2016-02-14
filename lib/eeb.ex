@@ -14,7 +14,8 @@ defmodule Eeb do
       worker(__MODULE__, [], function: :run),
       worker(Eeb.Hit.Client, []),
       worker(Eeb.Monitor, []),
-      worker(Eeb.GithubWebhook, [])
+      worker(Eeb.GithubWebhook, []),
+      worker(Eeb.DuoshuoRecord, [])
     ]
 
     opts = [strategy: :one_for_one, name: Eeb.Supervisor]
