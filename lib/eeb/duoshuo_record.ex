@@ -25,17 +25,17 @@ defmodule Eeb.DuoshuoRecord do
     record = get_record(blog_key)
     case record do
       nil ->
-        0
+        {:error, 0}
       _ ->
         case field do
           :comments ->
-            record.comments
+            {:ok, record.comments}
           :like ->
-            record.like
+            {:ok, record.like}
           :hits ->
-            record.hits
+            {:ok, record.hits}
           _ ->
-            0
+            {:error, 0}
         end
     end
   end
@@ -77,6 +77,11 @@ defmodule Eeb.DuoshuoRecord do
     else
       records = Map.put(records, blog_key, record)
     end
+
+    if String.to_integer(record.comments) > 0 or String.to_integer(record.like) > 0 do
+      Eeb.Monitor.regenerate_index()
+    end
+
     {:noreply, records}
   end
 end

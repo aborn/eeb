@@ -28,6 +28,10 @@ defmodule Eeb.Monitor do
     GenServer.cast(@servername, {:hits_event})
   end
 
+  def regenerate_index do
+    GenServer.cast(@servername, {:regenerate_index})
+  end
+
   # 下面是server部分
   def init(:ok) do
     {:ok, %{}}
@@ -40,7 +44,7 @@ defmodule Eeb.Monitor do
       currentTimeSec = Time.now(:secs)
       # 当前时间与上次操作的时间差大于1分钟(60s)时，执行更新
       if (currentTimeSec - lastTimeSec > 60) do
-        Hex.Shell.info("   %%% generate event hits!!")
+        # Hex.Shell.info("generate event hits!!")
         Eeb.Convert.convert_markdown_blogs_to_html()
         Eeb.Image.yank_images_from_origin()
         #Eeb.Index.generate_index_page()
@@ -50,6 +54,11 @@ defmodule Eeb.Monitor do
     else
       {:noreply, Map.put(infos, @statusflag, Time.now(:secs))}
     end
+  end
+
+  def handle_cast({:regenerate_index}, infos) do
+    Eeb.Index.generate_index_page()
+    {:noreply, infos}
   end
 
 end

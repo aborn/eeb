@@ -17,6 +17,7 @@ defmodule Eeb.Index do
   生成首页
   """
   def generate_index_page() do
+    Hex.Shell.info("generate_index_page")
     files = BlogUtils.get_blog_file_name_list()
     blogItemList = build_blog_item_list(files)
 
@@ -41,12 +42,28 @@ defmodule Eeb.Index do
       blog_time = BlogUtils.get_file_mtime_iso(blog_path)
       Eeb.Hit.Client.make_sure_hit_server_started()
       blog_hits = Eeb.Hit.Client.get_hits(blog_url)
+      Eeb.DuoshuoRecord.make_sure_duoshuo_record_boot_up()
+
+      blog_comments = case Eeb.DuoshuoRecord.get_record(blog_url, :comments) do
+                      {:ok, comments} ->
+                        comments
+                      _ ->
+                        0
+                    end
+
+      blog_like = case Eeb.DuoshuoRecord.get_record(blog_url, :like) do
+                  {:ok, likes} ->
+                    likes
+                  _ ->
+                    0
+                end
+
       %Eeb.Blog {
         url: blog_url,
         title: blog_title,
         hits: blog_hits,
-        comments: "0",
-        like: "0",
+        comments: blog_comments,
+        like: blog_like,
         time: blog_time #"2016-01-10T10:16:06+08:00"
       }
     end)
