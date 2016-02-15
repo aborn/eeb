@@ -1,7 +1,10 @@
-* TODO [11%] eeb未实现的功能
+* TODO [20%] eeb未实现的功能
 ** TODO 点赞功能
 ** TODO 阅读量，评论，like数的持久化
-** ONGOING 接入评论，如多说 
+** CLOSED 接入评论，如多说
+CLOSED: [2016-02-15 Mon 23:50]
+- CLOSING NOTE [2016-02-15 Mon 23:50] \\
+  完成duoshuo接入
 ** TODO 首页列表分页功能
 ** CLOSED 对elixir语言的代码高亮
    CLOSED: [2016-02-03 Wed 09:21]
@@ -12,3 +15,4 @@
 ** TODO 是否对https进行支持
 ** TODO 添加回顶部
 ** TODO 分享功能
+** TODO Hex.Shell.info改成Eeb.Shell.debug，只在debug模式下才显示消息
