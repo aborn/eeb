@@ -1,6 +1,7 @@
 defmodule Eeb.DuoshuoPlug do
 
   @duoshuo_short_name_key :duoshuo_short_name
+
   import Eeb.ConfigUtils
   
   def duoshuo_short_name do

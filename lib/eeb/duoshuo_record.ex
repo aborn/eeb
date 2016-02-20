@@ -2,9 +2,10 @@ defmodule Eeb.DuoshuoRecord do
   @servername :duoshuorecord
 
   @moduledoc """
-  主要用来记录多说的评论数、喜欢等数据
+  used for duoshuo plugin (http://duoshuo.com/).
   """
   use GenServer
+  alias Eeb.DuoshuoPlug
 
   # client part
   def start_link do
@@ -22,21 +23,25 @@ defmodule Eeb.DuoshuoRecord do
   end
 
   def get_record(blog_key, field) do
-    record = get_record(blog_key)
-    case record do
-      nil ->
-        {:error, 0}
-      _ ->
-        case field do
-          :comments ->
-            {:ok, record.comments}
-          :like ->
-            {:ok, record.like}
-          :hits ->
-            {:ok, record.hits}
-          _ ->
-            {:error, 0}
-        end
+    if DuoshuoPlug.is_use_duoshuo? do
+      record = get_record(blog_key)
+      case record do
+        nil ->
+          {:error, 0}
+        _ ->
+          case field do
+            :comments ->
+              {:ok, record.comments}
+            :like ->
+              {:ok, record.like}
+            :hits ->
+              {:ok, record.hits}
+            _ ->
+              {:error, 0}
+          end
+      end
+    else
+      {:ok, 0}
     end
   end
 
