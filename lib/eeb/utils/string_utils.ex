@@ -1,12 +1,16 @@
 defmodule Eeb.Utils.StringUtils do
 
   @moduledoc """
-  util methods for deal with string.
+  util methods for string.
   """
 
   def to_integer(str) do
     if is_binary(str) do
-      String.to_integer(str)
+      try do
+        String.to_integer(str)
+      rescue
+        ArgumentError -> 0
+      end
     end
   end
 end
