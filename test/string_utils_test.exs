@@ -7,5 +7,7 @@ defmodule Eeb.Utils.StringUtilsTest do
     assert StringUtils.to_integer("0") == 0
     assert StringUtils.to_integer("s") == 0
     assert StringUtils.to_integer("1") == 1
+    assert StringUtils.to_integer(2) == 2
+    assert StringUtils.to_integer(0) == 0
   end
 end
