@@ -4,13 +4,20 @@ defmodule Eeb.Utils.StringUtils do
   util methods for string.
   """
 
-  def to_integer(str) do
-    if is_binary(str) do
-      try do
-        String.to_integer(str)
-      rescue
-        ArgumentError -> 0
-      end
+  alias Eeb.Utils.SysUtils
+
+  def to_integer(inputValue) do
+    case SysUtils.type(inputValue) do
+      :string ->
+        try do
+          String.to_integer(inputValue)
+        rescue
+          ArgumentError -> 0
+        end
+      :integer ->
+        inputValue
+      _ ->
+        0
     end
   end
 end
