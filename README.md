@@ -10,7 +10,10 @@ eeb是elixir语言版本的博客平台，它由两部分组成：
 2. webserver。
 
 ## 当前开发版本
-v0.2.0-dev
+v0.2.1-dev
+
+## 最新发布版本
+v0.2.0
 
 ## 安装eeb
 注意：安装和运行eeb需要elixir(1.2以上版本)语言环境，安装elixir见官方的[安装说明](http://elixir-lang.org/install.html)。  
@@ -28,7 +31,7 @@ def application do
 end
   
 defp deps do
-  [{:eeb, "~> 0.1.3"}]
+  [{:eeb, "~> 0.2.0"}]
 end
 ```
 **3.** 然后安装依赖到本地，最后部署eeb博客  

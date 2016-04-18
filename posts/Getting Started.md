@@ -24,7 +24,7 @@ cd eeb_blog
     [applications: [:logger,:eeb]]
   end
   defp deps do
-    [{:eeb, "~> 0.1.3"}]
+    [{:eeb, "~> 0.2.0"}]
   end
 ```
 **3.** install dependency, finally, deploy it  
@@ -121,4 +121,4 @@ mix eeb.config blog_port 4002
 But, the first one will be work if you use both method.
 
 ## Update date
-2016-01-31
+2016-04-18

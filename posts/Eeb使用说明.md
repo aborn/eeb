@@ -3,10 +3,17 @@ Elixir Extendable Blog, http://eeb.popkit.org/. English native user, pls ref [En
 [![Build Status](https://travis-ci.org/aborn/eeb.svg)](https://travis-ci.org/aborn/eeb)
 [![Hex.pm Version](http://img.shields.io/hexpm/v/eeb.svg?style=flat)](https://hex.pm/packages/eeb)
 [![Inline docs](http://inch-ci.org/github/aborn/eeb.svg)](http://inch-ci.org/github/aborn/eeb)
-[![Coverage Status](https://coveralls.io/repos/aborn/eeb/badge.svg?branch=master&service=github)](https://coveralls.io/github/aborn/eeb?branch=master)   
+[![Coverage Status](https://coveralls.io/repos/aborn/eeb/badge.svg?branch=master&service=github)](https://coveralls.io/github/aborn/eeb?branch=master)
+[![Hex.pm Downloads](https://img.shields.io/hexpm/dt/eeb.svg?style=flat)](https://hex.pm/packages/eeb)  
 eeb是elixir语言版本的博客平台，它由两部分组成：  
 1. 静态博客生成器；  
 2. webserver。
+
+## 当前开发版本
+v0.2.1-dev
+
+## 最新发布版本
+v0.2.0
 
 ## 安装eeb
 注意：安装和运行eeb需要elixir(1.2以上版本)语言环境，安装elixir见官方的[安装说明](http://elixir-lang.org/install.html)。  
@@ -24,7 +31,7 @@ def application do
 end
   
 defp deps do
-  [{:eeb, "~> 0.1.3"}]
+  [{:eeb, "~> 0.2.0"}]
 end
 ```
 **3.** 然后安装依赖到本地，最后部署eeb博客  
@@ -60,6 +67,7 @@ mix eeb.deploy
 screen mix eeb.deploy  # C-a d
 # screen -ls
 # screen -r id
+# screen -X -S id quit #(Attached)
 ```
 
 ## Github Webhooks
@@ -126,7 +134,7 @@ mix eeb.config duoshuo_short_name your_duoshuo_short_name
 
 ## 对elixir语言的代码高亮支持
 如下示例：  
-```
+```elixir
 defmodule Eeb.DuoshuoPlug do
 
   @duoshuo_short_name_key :duoshuo_short_name
@@ -149,4 +157,4 @@ end
 ```
 
 ## 项目更新于
-2016-02-02
+2016-04-18
