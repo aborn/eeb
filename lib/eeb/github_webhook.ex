@@ -41,8 +41,12 @@ defmodule Eeb.GithubWebhook do
   end
 
   def handle_cast({:update_blog}, infos) do
-    result = System.cmd(System.cwd() <> "/scripts/gitupdate.sh", [BlogPath.post_path],[])
+    # result = System.cmd(System.cwd() <> "/scripts/gitupdate.sh", [BlogPath.post_path],[])
+    cwd_path = System.cwd()
+    IEx.Helpers.cd(BlogPath.post_path)
+    result = System.cmd("git", ["pull"], [])
     Hex.Shell.info("result: #{inspect result}")
+    IEx.Helpers.cd(cwd_path)
     {:noreply, infos}
   end
 end
