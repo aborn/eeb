@@ -56,7 +56,7 @@ var DateDiff = {
         var minutes = this.inMinutes(d1,d2);
         var hours = this.inHours(d1,d2);
         if (minutes < 2) {
-            return "刚刚发表"
+            return "刚刚发表";
         } else if (minutes < 60) {
             return  minutes + "分钟之前";
         } else {
@@ -67,13 +67,7 @@ var DateDiff = {
                 if (days < 30) {
                     return days + "天之前";
                 } else {
-                    var months = this.inMonths(d1, d2);
-                    if (months < 12) {
-                        return months + "月之前";
-                    } else {
-                        var years = this.inYears(d1, d2);
-                        return years + "年之前";
-                    }
+                    return d1;
                 }
             }
         }
@@ -90,7 +84,7 @@ function doTimeAction() {
 }
 
 function timer() {
-    doTimeAction()
+    doTimeAction();
     setTimeout("timer()",1000);
 }
 
@@ -101,4 +95,4 @@ $('.popup').popup();
 // 正文中的图片限制最大宽度
 $('body').find('img').each(function(index, value) {
     $(value).css("max-width", "700px");
-})
+});

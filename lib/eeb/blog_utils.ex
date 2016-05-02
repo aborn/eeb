@@ -10,16 +10,17 @@ defmodule Eeb.BlogUtils do
   获得所有博客的名字列表
   """
   def get_blog_file_name_list() do
-    case File.ls(BlogPath.post_path()) do
+    path = BlogPath.post_path()
+    case File.ls(path) do
       {:ok, files} ->
         # 按时间从最新到最老排序
         sorted_files = Enum.sort(files,  &(blog_file_time(&1) >= blog_file_time(&2)))
         Enum.filter(sorted_files, &(is_file_legal(&1)))
       {:error, reason} ->
-        IO.puts "File.ls error #{reason}"
+        Hex.Shell.error "File.ls error #{reason}, please make sure blog path #{path} exists?"
         []
       _ ->
-        IO.puts "other error exception"
+        Hex.Shell.error "other error exception"
         []
     end
   end
