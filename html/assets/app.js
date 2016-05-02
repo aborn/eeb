@@ -67,7 +67,13 @@ var DateDiff = {
                 if (days < 30) {
                     return days + "天之前";
                 } else {
-                    return d1;
+                    if (d1 instanceof Date) {
+                        return  d1.getFullYear() + "-" +
+                            (d1.getMonth() + 1) + "-" +
+                            (d1.getDay() +1) + " " + d1.toLocaleTimeString();
+                    } else {
+                        return "发表时间未知!";
+                    }
                 }
             }
         }
