@@ -8,9 +8,9 @@
     </footer>
   </div>
 
-  <script src="http://oss.maxcdn.com/jquery/2.1.4/jquery.min.js"></script>
-  <script src="http://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.js"></script>
-  <script src="http://www.dpfile.com/sc/static/highlight/<%= config.highlight %>/highlight.pack.js"></script>
+  <script src="https://oss.maxcdn.com/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://oss.maxcdn.com/semantic-ui/2.1.6/semantic.min.js"></script>
+  <script src="https://www.dpfile.com/sc/static/highlight/<%= config.highlight %>/highlight.pack.js"></script>
   <script src="assets/app.js"></script>
   <script src="assets/duoshuo.js"></script> 
   </body>
